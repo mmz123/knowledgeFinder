@@ -1,4 +1,4 @@
-package bit.edu.controller;
+package bit.edu.service;
 
 /**
  * 界面端发出录音请求，java采集问题音频

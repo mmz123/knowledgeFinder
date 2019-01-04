@@ -1,4 +1,4 @@
-package bit.edu.kg;
+package bit.edu.test;
 
 public class knowledgeFinder {
 	public void main(String[] args){
