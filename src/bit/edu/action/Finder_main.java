@@ -1,4 +1,4 @@
-package bit.edu.view;
+package bit.edu.action;
 
 public class Finder_main {
 

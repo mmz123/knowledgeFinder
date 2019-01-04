@@ -1,9 +1,9 @@
 package bit.edu.utils;
 /**
- * 文件输入
+ * 从本地读取文件
  * @author me
  *
  */
-public class dcI {
+public class DcInput {
 
 }
