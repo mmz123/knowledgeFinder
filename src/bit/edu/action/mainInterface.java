@@ -19,15 +19,22 @@ public class mainInterface extends JFrame{
 	
 	
 	public void CreatInterface(String title){
-		JFrame jf = new JFrame(title);
-		Container container = jf.getContentPane();
+		JFrame jf = new JFrame(title);//窗体标题
+		jf.setLayout(null);//取消布局管理器
+		jf.setBounds(0, 0, 1000, 800);
+//		jf.setSize(1000, 800);
+		Container container = jf.getContentPane();//创建容器对象
 		container.setLayout(null);
+		jf.setVisible(true);
+
+		//窗口关闭方式
+		jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
-		JButton bl = new JButton();
-		bl.setIcon(new ImageIcon("microphone.jpg"));
-		bl.setBounds(600, 20, 50, 80);
+		JButton record = new JButton();
+		record.setIcon(new ImageIcon("microphone.jpg"));
+		record.setBounds(600, 20, 50, 80);
 		//为按钮添加鼠标单击事件
-		bl.addActionListener(new ActionListener(){
+		record.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -36,33 +43,34 @@ public class mainInterface extends JFrame{
 				
 			}
 		});
-		container.add(bl);
+		container.add(record);
 		
 		container.setBackground(Color.LIGHT_GRAY);
-		jf.setVisible(true);
-		jf.setSize(1000, 800);
-		//窗口关闭方式
-		jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		
 		
 		
 	}
 		
-//	public void CreatInterface(String title){
-//		JFrame jf = new JFrame(title);
-//		Container container = jf.getContentPane();
-////		JLabel jl = new JLabel("主界面");
-////		//使标签文字居于上方中间
-////		jl.setHorizontalAlignment(SwingConstants.CENTER);
-////		container.add(jl);
-//		container.setBackground(Color.WHITE);
-//		jf.setVisible(true);
-//		jf.setSize(1000, 800);
-//		//窗口关闭方式
-//		jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//
-//		
-//	}
-	
-	
+
 
 }
+
+
+
+//public void CreatInterface(String title){
+//JFrame jf = new JFrame(title);
+//Container container = jf.getContentPane();
+////JLabel jl = new JLabel("主界面");
+//////使标签文字居于上方中间
+////jl.setHorizontalAlignment(SwingConstants.CENTER);
+////container.add(jl);
+//container.setBackground(Color.WHITE);
+//jf.setVisible(true);
+//jf.setSize(1000, 800);
+////窗口关闭方式
+//jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//
+//
+//}
+
+
