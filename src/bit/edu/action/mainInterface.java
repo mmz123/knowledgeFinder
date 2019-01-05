@@ -23,8 +23,9 @@ public class mainInterface extends JFrame{
 		Container container = jf.getContentPane();
 		container.setLayout(null);
 		
-		JButton bl = new JButton("麦克风");
-		bl.setBounds(12, 12, 120, 25);
+		JButton bl = new JButton();
+		bl.setIcon(new ImageIcon("microphone.jpg"));
+		bl.setBounds(600, 20, 50, 80);
 		//为按钮添加鼠标单击事件
 		bl.addActionListener(new ActionListener(){
 			@Override
