@@ -38,6 +38,8 @@ public class textBox1 extends JFrame{
 	public textBox1() {
 
 		
+		
+		
 	}
 	
 	
