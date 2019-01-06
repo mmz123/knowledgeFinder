@@ -1,7 +1,11 @@
 package bit.edu.action;
 
+import java.awt.Font;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 /**
  * 功能1：接收AudioToText输出的问题文本并输出
@@ -11,19 +15,28 @@ import javax.swing.JFrame;
  *
  */
 public class textBox1 extends JFrame{
-	
+//	private JTextField textBox1;
 	//用户输入的问题文本
-	public textBox1(mainInterface mainInterface){
-		final textBox1 tb = new textBox1("aa",20);
-		final JButton jb = new JButton("清除");
-		
+	public JTextField textBox_v1(){
+//		textBox1 = new JTextField();
+//		textBox1.setHorizontalAlignment(SwingConstants.LEFT);
+//		textBox1.setFont(new Font("宋体", Font.PLAIN, 12));
+//		textBox1.setBounds(25, 25, 600, 36);
+////		contentPane.add(textBox1);
+//		textBox1.setColumns(20);
+		//文本框1
+		JTextField textBox = new JTextField();
+		textBox.setHorizontalAlignment(SwingConstants.LEFT);
+		textBox.setFont(new Font("宋体", Font.PLAIN, 12));
+		textBox.setBounds(25, 25, 600, 36);
+		textBox.setColumns(20);
+		return textBox;
 		
 		
 	}
 
-	public textBox1(String string, int i) {
-		// TODO Auto-generated constructor stub
-		
+	public textBox1() {
+
 		
 	}
 	

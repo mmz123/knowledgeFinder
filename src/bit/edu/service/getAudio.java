@@ -8,6 +8,11 @@ package bit.edu.service;
  */
 
 public class getAudio {
+
+	public void diaoyong() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

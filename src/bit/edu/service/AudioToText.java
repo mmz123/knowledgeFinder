@@ -9,5 +9,24 @@ package bit.edu.service;
  *
  */
 public class AudioToText {
+	public AudioToText() {
+		//TODO 
+		System.out.println("此处初始化数据");
+	}
+	
+	
+	//读取录音文件
+	public void readRecordFile(){
+		
+	}
+	//调用百度接口识别
 
+
+
+	public void diaoyong() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 }
