@@ -79,7 +79,7 @@ public class mainInterface extends JFrame{
 		
 		//文本框2
 		textBox2 textBox2 = new textBox2();
-		contentPane.add(textBox2.textBox_v2());
+		contentPane.add(textBox2.textBox_v());
 
 
 

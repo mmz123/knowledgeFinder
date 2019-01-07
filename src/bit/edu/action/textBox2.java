@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
  */
 
 public class textBox2 extends JFrame{
-	public JTextField textBox_v2(){
+	public JTextField textBox_v(){
 
 		//文本框2
 		JTextField textBox = new JTextField();
