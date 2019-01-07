@@ -36,6 +36,7 @@ public class recordInterface extends JDialog{
 		JButton button = new JButton("提交");
 		button.setBackground(SystemColor.window);
 		button.setBounds(180, 50, 60, 36);
+		button.setFocusPainted(false);
 		container.add(button);
 		//为录音按钮添加鼠标单击事件
 		button.addActionListener(new ActionListener(){

@@ -89,6 +89,7 @@ public class mainInterface extends JFrame{
 		button.setBackground(SystemColor.control);
 		button.setFont(new Font("宋体", Font.PLAIN, 12));
 		button.setBounds(650, 90, 80, 36);
+		button.setFocusPainted(false);
 		contentPane.add(button);
 		
 		//文本框3
