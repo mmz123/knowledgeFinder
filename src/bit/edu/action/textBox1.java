@@ -18,12 +18,7 @@ public class textBox1 extends JFrame{
 //	private JTextField textBox1;
 	//用户输入的问题文本
 	public JTextField textBox_v1(){
-//		textBox1 = new JTextField();
-//		textBox1.setHorizontalAlignment(SwingConstants.LEFT);
-//		textBox1.setFont(new Font("宋体", Font.PLAIN, 12));
-//		textBox1.setBounds(25, 25, 600, 36);
-////		contentPane.add(textBox1);
-//		textBox1.setColumns(20);
+
 		//文本框1
 		JTextField textBox = new JTextField();
 		textBox.setHorizontalAlignment(SwingConstants.LEFT);
