@@ -65,15 +65,17 @@ public class recordInterface extends JDialog{
 				AudioToText audioToText = new AudioToText();
 				//textBox1要接收的转换后的文本
 				String questionText = audioToText.questionText();
-				System.out.println(questionText);
+				//测试
+				System.out.println("测试  "+questionText);
 				recordInterface.this.content = questionText;
 							
 				//运行Match匹配程序
 				Match match = new Match();
+				//文本框2要接收的与模板匹配之后的最终的问题文本
 				String finalText = match.finalText();
-//				System.out.println(finalText);
+				System.out.println("测试  "+finalText);
 				recordInterface.this.content1 = finalText;
-				System.out.println(content1);
+
 				
 //				//文本框2要接收的与模板匹配之后的最终的问题文本
 //				String finalText = match.finalText();
@@ -91,17 +93,17 @@ public class recordInterface extends JDialog{
 		return content;
 	}
 
-	public void setQuetiontext(String text) {
-		this.content = text;
-	}
+//	public void setQuetiontext(String text) {
+//		this.content = text;
+//	}
 	
 	public String getFinaltext(){
 		return content1;
 	}
 
-	public void setFinaltext(String text) {
-		this.content = text;
-	}
+//	public void setFinaltext(String text) {
+//		this.content1 = text;
+//	}
 
 
 }
