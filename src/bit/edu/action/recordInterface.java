@@ -17,8 +17,9 @@ import javax.swing.SwingConstants;
 import bit.edu.service.AudioToText;
 
 /**
- * 在主界面点击录音按钮之后，弹出录音窗口
- * 录音结束点击提交按钮，调用
+ * 1.在主界面点击录音按钮之后，弹出录音窗口，调用getAudio程序
+ * 2.录音结束点击提交按钮，停止getAudio程序，关闭录音窗口
+ * 3.调用AudioToText程序，接收音频转换的文本
  * @author lenovo
  *
  */
@@ -50,6 +51,12 @@ public class recordInterface extends JDialog{
 				// TODO Auto-generated method stub
 				//关闭当前窗体，不关闭父窗口
 				dispose();
+				
+/**
+* 停止录音，getAudio程序运行结束
+*/
+				
+				
 				
 				//运行语音识别程序，读取识别转换的文字
 				AudioToText audioToText = new AudioToText();

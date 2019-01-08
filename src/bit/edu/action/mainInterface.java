@@ -72,11 +72,14 @@ public class mainInterface extends JFrame{
 				//使recordInterface窗体可见
 				recordInterface recordinterface  = new recordInterface(mainInterface.this);
 				recordinterface.setVisible(true);
-				textBox1.setText(recordinterface.getAtext());
+				
 				
 				//调用音频采集
 				getAudio getAudio = new getAudio();
 				getAudio.Record();
+				
+				//将音频转换的文本显示到文本框1中
+				textBox1.setText(recordinterface.getAtext());
 				
 			}
 		});

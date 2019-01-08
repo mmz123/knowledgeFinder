@@ -7,6 +7,8 @@ package bit.edu.service;
  *
  */
 
-public class IKAnaylzer {
-
+public class textProcess {
+	
+	
+	
 }
