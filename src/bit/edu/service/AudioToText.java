@@ -11,15 +11,25 @@ package bit.edu.service;
 public class AudioToText {
 	public AudioToText() {
 		//TODO 
-		System.out.println("此处初始化数据");
+//		System.out.println("此处初始化数据");
 	}
 	
 	
 	//读取录音文件
 	public void readRecordFile(){
 		
+		
 	}
-	//调用百度接口识别
+	
+	//调用百度接口识别，识别音频文件，返回问题文本
+	public String BaiDu(){
+		String text = new String();
+		
+		
+		
+		
+		return (text);
+	}
 
 
 
