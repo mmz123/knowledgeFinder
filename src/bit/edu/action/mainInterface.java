@@ -15,16 +15,21 @@ import bit.edu.service.getAudio;
 /**
  * 主界面设计，包含文本框、按钮的尺寸、位置设置
  * 弹出的录音窗口的设置
+ * 
+ * 文本框1功能：
+ * 功能1：接收AudioToText输出的问题文本并输出
+ * 功能2：接收用户直接输入的问题文本并输出
+ * 
  * @author lenovo
  *
  */
 
 public class mainInterface extends JFrame{
 //	private JPanel contentPane;
-//	private JTextField textBox1;
+	private JTextField textBox1;
 //	private JTextField textBox2;
 //	private JTextField textBox3;
-	private JTextField textBox1;
+
 	
 	/**
 	 * 

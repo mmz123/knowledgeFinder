@@ -10,7 +10,7 @@ import javax.swing.SwingConstants;
 import bit.edu.service.AudioToText;
 
 /**
- * 功能1：接收AudioToText输出的问题文本并输出
+ * 
  * 
  * 功能2：接收用户直接输入的问题文本并输出
  * @author me
@@ -18,12 +18,12 @@ import bit.edu.service.AudioToText;
  */
 public class textBox1 extends JTextField{
 
-	public textBox1(String text) {
-		super.setText(text);
-	}
-	
-	public textBox1() {
-		// TODO Auto-generated constructor stub
-	}
+//	public textBox1(String text) {
+//		super.setText(text);
+//	}
+//	
+//	public textBox1() {
+//		// TODO Auto-generated constructor stub
+//	}
 	
 }
