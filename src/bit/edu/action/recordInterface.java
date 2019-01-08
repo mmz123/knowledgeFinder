@@ -48,7 +48,7 @@ public class recordInterface extends JDialog{
 				//
 				//读取识别转换为文字
 				AudioToText audioToText = new AudioToText();
-				audioToText.BaiDu();
+				audioToText.AnswerText();
 				//TODO存储数据到数据库
 				//新创建一个查询类QueryTxt(查询语音转化过来的问文字（未校验的结果）)
 				
