@@ -20,6 +20,7 @@ public class AudioToText {
 		String AnswerText = new String();
 		AnswerText = "pp";
 		
+		
 		return(AnswerText);
 	}
 	

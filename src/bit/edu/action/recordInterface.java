@@ -46,13 +46,13 @@ public class recordInterface extends JDialog{
 				//关闭窗体
 				dispose();
 				
-				//运行语音识别程序，读取识别转换的文字
-				AudioToText audioToText = new AudioToText();
-				//textBox1要接收的转换后的文本
-				String AnswerText = audioToText.AnswerText();
-				
-				//textBox1获取后台输入的数据
-				textBox1.setText(""+AnswerText);
+//				//运行语音识别程序，读取识别转换的文字
+//				AudioToText audioToText = new AudioToText();
+//				//textBox1要接收的转换后的文本
+//				String AnswerText = audioToText.AnswerText();
+//				System.out.println(AnswerText);
+//				//textBox1获取后台输入的数据
+//				textBox1.SetText(AnswerText);
 			}
 		});
 		

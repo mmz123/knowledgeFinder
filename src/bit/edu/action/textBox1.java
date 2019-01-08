@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import bit.edu.service.AudioToText;
+
 /**
  * 功能1：接收AudioToText输出的问题文本并输出
  * 
@@ -28,8 +30,6 @@ public class textBox1 extends JFrame{
 		return textBox;
 		
 		
-//		System.out.println(" ");
-		
 	}
 
 	
@@ -37,12 +37,6 @@ public class textBox1 extends JFrame{
 		
 		
 		
-		
-	}
-
-
-	public static void setText(String string) {
-		// TODO Auto-generated method stub
 		
 	}
 	
