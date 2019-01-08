@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import bit.edu.service.AudioToText;
 import bit.edu.service.getAudio;
 
 
@@ -27,6 +26,11 @@ public class mainInterface extends JFrame{
 //	private JTextField textBox3;
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5290416764892459818L;
+
 	public void CreatInterface(String title){
 		setTitle(title);//窗体标题
 		setBackground(SystemColor.inactiveCaption);
