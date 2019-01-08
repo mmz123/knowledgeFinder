@@ -42,23 +42,13 @@ public class mainInterface extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		
-		
-		
-		
+
 		setVisible(true);
 
 		//文本框1
-//		textBox1 = new JTextField();
-//		textBox1.setHorizontalAlignment(SwingConstants.LEFT);
-//		textBox1.setFont(new Font("宋体", Font.PLAIN, 12));
-//		textBox1.setBounds(25, 25, 600, 36);
-//		contentPane.add(textBox1);
-//		textBox1.setColumns(20);	
 		textBox1 = new JTextField();
 		textBox1.setHorizontalAlignment(SwingConstants.LEFT);
-		textBox1.setFont(new Font("宋体", Font.PLAIN, 12));
+		textBox1.setFont(new Font("宋体", Font.PLAIN, 16));
 		textBox1.setBounds(25, 25, 600, 36);
 		textBox1.setColumns(20);
 		
@@ -72,6 +62,7 @@ public class mainInterface extends JFrame{
 		record.setIcon(new ImageIcon("microphone.jpg"));
 		record.setBounds(680, 25, 20, 36);
 		record.setBorder(null);
+		
 		contentPane.add(record);
 		//为录音按钮添加鼠标单击事件
 		record.addActionListener(new ActionListener(){

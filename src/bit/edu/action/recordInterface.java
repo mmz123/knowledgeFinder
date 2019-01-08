@@ -48,7 +48,7 @@ public class recordInterface extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//关闭窗体
+				//关闭当前窗体，不关闭父窗口
 				dispose();
 				
 				//运行语音识别程序，读取识别转换的文字
