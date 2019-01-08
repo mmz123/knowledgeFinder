@@ -51,6 +51,7 @@ public class recordInterface extends JDialog{
 				//textBox1要接收的转换后的文本
 				String AnswerText = audioToText.AnswerText();
 				
+				//textBox1获取后台输入的数据
 				textBox1.setText(""+AnswerText);
 			}
 		});
