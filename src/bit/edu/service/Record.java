@@ -1,4 +1,4 @@
-package bit.edu.action;
+package bit.edu.service;
 
 /**
  * 1.点击麦克风图标，弹出录音界面(包含录音结束按钮)，调用录音程序getAudio，
