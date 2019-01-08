@@ -28,10 +28,12 @@ public class textBox1 extends JFrame{
 		return textBox;
 		
 		
+		
 	}
 
+	
 	public textBox1() {
-
+		
 		
 		
 		

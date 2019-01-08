@@ -45,11 +45,11 @@ public class recordInterface extends JDialog{
 				// TODO Auto-generated method stub
 				//关闭窗体
 				dispose();
-				//
-				//读取识别转换为文字
-				AudioToText audioToText = new AudioToText();
-				audioToText.AnswerText();
 				
+				//运行语音识别程序，读取识别转换的文字
+				AudioToText audioToText = new AudioToText();
+				//textBox1要接收的转换后的文本
+				String AnswerText = audioToText.AnswerText();
 				
 				
 				
