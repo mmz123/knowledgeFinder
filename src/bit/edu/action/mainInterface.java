@@ -39,6 +39,7 @@ public class mainInterface extends JFrame{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
 		setVisible(true);
 
 		//文本框1
