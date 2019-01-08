@@ -58,6 +58,8 @@ public class mainInterface extends JFrame{
 //		textBox1.setColumns(20);	
 		textBox1 textBox1 = new textBox1();
 		contentPane.add(textBox1.textBox_v1());
+		
+		
 
 		//录音按钮
 		JButton record = new JButton("");

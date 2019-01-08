@@ -28,6 +28,7 @@ public class textBox1 extends JFrame{
 		return textBox;
 		
 		
+//		System.out.println(" ");
 		
 	}
 
@@ -36,6 +37,12 @@ public class textBox1 extends JFrame{
 		
 		
 		
+		
+	}
+
+
+	public static void setText(String string) {
+		// TODO Auto-generated method stub
 		
 	}
 	

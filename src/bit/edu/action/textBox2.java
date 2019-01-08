@@ -28,8 +28,7 @@ public class textBox2 extends JFrame{
 		textBox.setColumns(20);
 		return textBox;
 		
-
-		
+			
 	}
 
 	public textBox2() {
