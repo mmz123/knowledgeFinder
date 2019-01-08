@@ -24,7 +24,7 @@ import bit.edu.service.AudioToText;
  */
 public class recordInterface extends JDialog{
 	
-	private String atext;
+	private String content;
 	
 	public recordInterface(mainInterface mainInterface) {
 		// TODO Auto-generated constructor stub
@@ -56,18 +56,18 @@ public class recordInterface extends JDialog{
 				//textBox1要接收的转换后的文本
 				String AnswerText = audioToText.AnswerText();
 				System.out.println(AnswerText);
-				recordInterface.this.atext = AnswerText;
+				recordInterface.this.content = AnswerText;
 			}
 		});
 		
 	}
 
 	public String getAtext() {
-		return atext;
+		return content;
 	}
 
 	public void setAtext(String atext) {
-		this.atext = atext;
+		this.content = atext;
 	}
 
 

@@ -48,7 +48,7 @@ public class mainInterface extends JFrame{
 		//文本框1
 		textBox1 = new JTextField();
 		textBox1.setHorizontalAlignment(SwingConstants.LEFT);
-		textBox1.setFont(new Font("宋体", Font.PLAIN, 16));
+		textBox1.setFont(new Font("宋体", Font.PLAIN, 20));
 		textBox1.setBounds(25, 25, 600, 36);
 		textBox1.setColumns(20);
 		
@@ -70,9 +70,10 @@ public class mainInterface extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				//使recordInterface窗体可见
-				recordInterface a  = new recordInterface(mainInterface.this);
-				a.setVisible(true);
-				textBox1.setText(a.getAtext());
+				recordInterface recordinterface  = new recordInterface(mainInterface.this);
+				recordinterface.setVisible(true);
+				textBox1.setText(recordinterface.getAtext());
+				
 				//调用音频采集
 				getAudio getAudio = new getAudio();
 				getAudio.Record();

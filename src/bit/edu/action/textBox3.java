@@ -18,7 +18,7 @@ public class textBox3 extends JFrame{
 		//文本框2
 		JTextField textBox = new JTextField();
 		textBox.setHorizontalAlignment(SwingConstants.LEFT);
-		textBox.setFont(new Font("宋体", Font.PLAIN, 12));
+		textBox.setFont(new Font("宋体", Font.PLAIN, 20));
 		textBox.setBounds(25, 155, 600, 36);
 
 		textBox.setColumns(20);

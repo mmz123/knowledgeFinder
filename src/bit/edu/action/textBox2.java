@@ -22,7 +22,7 @@ public class textBox2 extends JFrame{
 		//文本框2
 		JTextField textBox = new JTextField();
 		textBox.setHorizontalAlignment(SwingConstants.LEFT);
-		textBox.setFont(new Font("宋体", Font.PLAIN, 12));
+		textBox.setFont(new Font("宋体", Font.PLAIN, 20));
 		textBox.setBounds(25, 90, 600, 36);
 
 		textBox.setColumns(20);
