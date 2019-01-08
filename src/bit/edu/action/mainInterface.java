@@ -17,15 +17,19 @@ import bit.edu.service.getAudio;
  * 弹出的录音窗口的设置
  * 
  * 文本框1功能：
- * 功能1：接收AudioToText输出的问题文本并输出
- * 功能2：接收用户直接输入的问题文本并输出
+ * 功能1：接收AudioToText输出的问题文本
+ * 功能2：接收用户直接输入的问题文本
+ * 
  * 
  * 文本框2功能：
  * 功能1：接收按模板转换后的标准问题
- * 功能2：接收用户修改后的文本
+ * 功能2：支持用户对问题的部分文本做修改
+ * 功能3：返回用户修改后的内容
  * 
  * 文本框3功能：
- * 接收ModelToQuery
+ * 功能1：接收ModelToQuery返回的问题文本
+ * 
+ * 
  * 
  * @author lenovo
  *
@@ -86,7 +90,7 @@ public class mainInterface extends JFrame{
 				recordinterface.setVisible(true);
 				
 				
-				//调用音频采集
+				//调用Record录音程序
 				getAudio getAudio = new getAudio();
 				getAudio.Record();
 				

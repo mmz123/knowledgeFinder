@@ -18,8 +18,8 @@ import bit.edu.service.AudioToText;
 
 /**
  * 1.在主界面点击录音按钮之后，弹出录音窗口，调用getAudio程序
- * 2.录音结束点击提交按钮，停止getAudio程序，关闭录音窗口
- * 3.调用AudioToText程序，接收音频转换的文本
+ * 2.录音结束点击提交按钮，停止getAudio中record程序，关闭录音窗口
+ * 3.调用AudioToText程序，接收音频转换的文本，放入文本框1
  * @author lenovo
  *
  */
