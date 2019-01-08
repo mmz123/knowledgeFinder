@@ -27,7 +27,7 @@ import bit.edu.service.getAudio;
 public class mainInterface extends JFrame{
 //	private JPanel contentPane;
 	private JTextField textBox1;
-//	private JTextField textBox2;
+	private JTextField textBox2;
 //	private JTextField textBox3;
 
 	
@@ -89,9 +89,24 @@ public class mainInterface extends JFrame{
 			}
 		});
 		
+		
+		
 		//文本框2
-		textBox2 textBox2 = new textBox2();
-		contentPane.add(textBox2.textBox_v2());
+		
+		textBox2 = new JTextField();
+		textBox2.setHorizontalAlignment(SwingConstants.LEFT);
+		textBox2.setFont(new Font("宋体", Font.PLAIN, 20));
+		textBox2.setBounds(25, 90, 600, 36);
+		textBox2.setColumns(20);
+		textBox2.setVisible(true);
+		
+		contentPane.add(textBox2);
+		
+		textBox2.setText("model answer");
+
+//在textBox2中定义格式之后的添加方式		
+//		textBox2 textBox2 = new textBox2();
+//		contentPane.add(textBox2.textBox_v2());
 
 
 
