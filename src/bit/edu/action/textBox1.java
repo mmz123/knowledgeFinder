@@ -16,29 +16,14 @@ import bit.edu.service.AudioToText;
  * @author me
  *
  */
-public class textBox1 extends JFrame{
-//	private JTextField textBox1;
-	//用户输入的问题文本
-	public JTextField textBox_v1(){
+public class textBox1 extends JTextField{
 
-		//文本框1
-		JTextField textBox = new JTextField();
-		textBox.setHorizontalAlignment(SwingConstants.LEFT);
-		textBox.setFont(new Font("宋体", Font.PLAIN, 12));
-		textBox.setBounds(25, 25, 600, 36);
-		textBox.setColumns(20);
-		return textBox;
-		
-		
+	public textBox1(String text) {
+		super.setText(text);
 	}
-
 	
 	public textBox1() {
-		
-		
-		
-		
+		// TODO Auto-generated constructor stub
 	}
-	
 	
 }

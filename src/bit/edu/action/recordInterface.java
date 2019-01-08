@@ -1,6 +1,7 @@
 package bit.edu.action;
 
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import bit.edu.service.AudioToText;
 
@@ -20,6 +23,8 @@ import bit.edu.service.AudioToText;
  *
  */
 public class recordInterface extends JDialog{
+	
+	private String atext;
 	
 	public recordInterface(mainInterface mainInterface) {
 		// TODO Auto-generated constructor stub
@@ -46,16 +51,24 @@ public class recordInterface extends JDialog{
 				//关闭窗体
 				dispose();
 				
-//				//运行语音识别程序，读取识别转换的文字
-//				AudioToText audioToText = new AudioToText();
-//				//textBox1要接收的转换后的文本
-//				String AnswerText = audioToText.AnswerText();
-//				System.out.println(AnswerText);
-//				//textBox1获取后台输入的数据
-//				textBox1.SetText(AnswerText);
+				//运行语音识别程序，读取识别转换的文字
+				AudioToText audioToText = new AudioToText();
+				//textBox1要接收的转换后的文本
+				String AnswerText = audioToText.AnswerText();
+				System.out.println(AnswerText);
+				recordInterface.this.atext = AnswerText;
 			}
 		});
 		
 	}
+
+	public String getAtext() {
+		return atext;
+	}
+
+	public void setAtext(String atext) {
+		this.atext = atext;
+	}
+
 
 }

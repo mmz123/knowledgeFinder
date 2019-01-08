@@ -35,6 +35,7 @@ public class test extends Applet implements ActionListener{
         String temp=tokens.nextToken();//从文本区取下一个数据
         sum+=Integer.parseInt(temp);
       } 
+      System.out.println(sum);
       textF.setText(""+sum);
     }
     else if(e.getSource()==b2){

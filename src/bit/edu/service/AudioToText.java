@@ -21,7 +21,7 @@ public class AudioToText {
 		AnswerText = "pp";
 		
 		
-		return(AnswerText);
+		return AnswerText;
 	}
 	
 	

@@ -24,7 +24,7 @@ public class mainInterface extends JFrame{
 //	private JTextField textBox1;
 //	private JTextField textBox2;
 //	private JTextField textBox3;
-
+	private JTextField textBox1;
 	
 	/**
 	 * 
@@ -56,8 +56,13 @@ public class mainInterface extends JFrame{
 //		textBox1.setBounds(25, 25, 600, 36);
 //		contentPane.add(textBox1);
 //		textBox1.setColumns(20);	
-		textBox1 textBox1 = new textBox1();
-		contentPane.add(textBox1.textBox_v1());
+		textBox1 = new JTextField();
+		textBox1.setHorizontalAlignment(SwingConstants.LEFT);
+		textBox1.setFont(new Font("宋体", Font.PLAIN, 12));
+		textBox1.setBounds(25, 25, 600, 36);
+		textBox1.setColumns(20);
+		
+		contentPane.add(textBox1);
 		
 		
 
@@ -74,14 +79,12 @@ public class mainInterface extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				//使recordInterface窗体可见
-				new recordInterface(mainInterface.this).setVisible(true);
+				recordInterface a  = new recordInterface(mainInterface.this);
+				a.setVisible(true);
+				textBox1.setText(a.getAtext());
 				//调用音频采集
 				getAudio getAudio = new getAudio();
 				getAudio.Record();
-				
-				
-				
-				
 				
 			}
 		});
@@ -120,23 +123,5 @@ public class mainInterface extends JFrame{
 	}
 
 }
-
-
-
-//public void CreatInterface(String title){
-//JFrame jf = new JFrame(title);
-//Container container = jf.getContentPane();
-////JLabel jl = new JLabel("主界面");
-//////使标签文字居于上方中间
-////jl.setHorizontalAlignment(SwingConstants.CENTER);
-////container.add(jl);
-//container.setBackground(Color.WHITE);
-//jf.setVisible(true);
-//jf.setSize(1000, 800);
-////窗口关闭方式
-//jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//
-//
-//}
 
 
