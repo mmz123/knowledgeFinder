@@ -15,17 +15,20 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import bit.edu.service.AudioToText;
+import bit.edu.service.Match;
 
 /**
  * 1.在主界面点击录音按钮之后，弹出录音窗口，调用getAudio程序
  * 2.录音结束点击提交按钮，停止getAudio中record程序，关闭录音窗口
  * 3.调用AudioToText程序，接收音频转换的文本，放入文本框1
+ * 4.调用Match问题与模型匹配的程序，文本框2接收匹配之后的标准问题
  * @author lenovo
  *
  */
 public class recordInterface extends JDialog{
 	
 	private String content;
+	private String content1;
 	
 	public recordInterface(mainInterface mainInterface) {
 		// TODO Auto-generated constructor stub
@@ -61,9 +64,21 @@ public class recordInterface extends JDialog{
 				//运行语音识别程序，读取识别转换的文字
 				AudioToText audioToText = new AudioToText();
 				//textBox1要接收的转换后的文本
-				String AnswerText = audioToText.AnswerText();
-				System.out.println(AnswerText);
-				recordInterface.this.content = AnswerText;
+				String questionText = audioToText.questionText();
+				System.out.println(questionText);
+				recordInterface.this.content = questionText;
+							
+				//运行Match匹配程序
+				Match match = new Match();
+				String finalText = match.finalText();
+//				System.out.println(finalText);
+				recordInterface.this.content1 = finalText;
+				System.out.println(content1);
+				
+//				//文本框2要接收的与模板匹配之后的最终的问题文本
+//				String finalText = match.finalText();
+//				System.out.println(finalText);
+//				recordInterface.this.content = finalText;
 				
 				
 				
@@ -72,12 +87,20 @@ public class recordInterface extends JDialog{
 		
 	}
 
-	public String getAtext() {
+	public String getQuetiontext() {
 		return content;
 	}
 
-	public void setAtext(String atext) {
-		this.content = atext;
+	public void setQuetiontext(String text) {
+		this.content = text;
+	}
+	
+	public String getFinaltext(){
+		return content1;
+	}
+
+	public void setFinaltext(String text) {
+		this.content = text;
 	}
 
 

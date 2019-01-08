@@ -16,11 +16,11 @@ public class AudioToText {
 	
 	
 	//读取录音文件,调用百度接口识别，识别音频文件，返回问题文本
-	public String AnswerText(){
-		String AnswerText = new String();
-		AnswerText = "pp";
+	public String questionText(){
+		String questionText = new String();
+		questionText = "pp";
 		
-		return AnswerText;
+		return questionText;
 	}
 	
 	

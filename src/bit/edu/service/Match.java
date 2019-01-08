@@ -1,14 +1,21 @@
 package bit.edu.service;
 
 /**
- * 1.接收IKAnaylzer的输出，将问题文本与问题模板匹配
- * 2.输出问题属于哪一类模板
+ * 1.接收textProcess的输出，将处理过的文本与问题模板融合
+ * 2.返回融合后的标准问题
  * 
  * @author me
  *
  */
 
 public class Match {
+	
+	public String finalText(){
+		String finalText = new String();
+		
+		finalText = "88";
+		return finalText;
+	}
 	
 	
 

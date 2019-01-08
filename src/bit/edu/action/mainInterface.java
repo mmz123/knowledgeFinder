@@ -70,6 +70,24 @@ public class mainInterface extends JFrame{
 		
 		contentPane.add(textBox1);
 		
+		//文本框2
+		
+		textBox2 = new JTextField();
+		textBox2.setHorizontalAlignment(SwingConstants.LEFT);
+		textBox2.setFont(new Font("宋体", Font.PLAIN, 20));
+		textBox2.setBounds(25, 90, 600, 36);
+		textBox2.setColumns(20);
+		textBox2.setVisible(true);
+				
+		contentPane.add(textBox2);
+				
+//		textBox2.setText("model question");
+
+		//在textBox2中定义格式之后的添加方式		
+//		textBox2 textBox2 = new textBox2();
+//		contentPane.add(textBox2.textBox_v2());
+
+		
 		
 
 		//录音按钮
@@ -95,33 +113,17 @@ public class mainInterface extends JFrame{
 				getAudio.Record();
 				
 				//将音频转换的文本显示到文本框1中
-				textBox1.setText(recordinterface.getAtext());
+				textBox1.setText(recordinterface.getQuetiontext());
 				
-				
-				
+//				//将匹配模板之后的标准问题文本显示到文本框2中
+				textBox2.setText(recordinterface.getFinaltext());
 				
 			}
 		});
 		
 		
 		
-		//文本框2
 		
-		textBox2 = new JTextField();
-		textBox2.setHorizontalAlignment(SwingConstants.LEFT);
-		textBox2.setFont(new Font("宋体", Font.PLAIN, 20));
-		textBox2.setBounds(25, 90, 600, 36);
-		textBox2.setColumns(20);
-		textBox2.setVisible(true);
-		
-		contentPane.add(textBox2);
-		
-		textBox2.setText("model answer");
-
-//在textBox2中定义格式之后的添加方式		
-//		textBox2 textBox2 = new textBox2();
-//		contentPane.add(textBox2.textBox_v2());
-
 
 
 		//确认按钮

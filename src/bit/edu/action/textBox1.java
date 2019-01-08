@@ -18,6 +18,17 @@ import bit.edu.service.AudioToText;
  */
 public class textBox1 extends JTextField{
 
+//	public String questionText(){
+//		//运行语音识别程序，读取识别转换的文字
+//		AudioToText audioToText = new AudioToText();
+//		//textBox1要接收的转换后的文本
+//		String questionText = audioToText.questionText();
+//		System.out.println(questionText);
+//		return questionText;
+//		
+//	}
+	
+	
 //	public textBox1(String text) {
 //		super.setText(text);
 //	}
