@@ -73,15 +73,14 @@ public class mainInterface extends JFrame{
 				// TODO Auto-generated method stub
 				//使recordInterface窗体可见
 				new recordInterface(mainInterface.this).setVisible(true);
-				//获取数据
+				//调用音频采集
 				getAudio getAudio = new getAudio();
-				getAudio.diaoyong();
-				//保存缓存中
+				getAudio.Record();
 				
 				
 				
 				
-			
+				
 			}
 		});
 		

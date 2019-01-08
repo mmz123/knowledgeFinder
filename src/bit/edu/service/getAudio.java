@@ -9,9 +9,11 @@ package bit.edu.service;
 
 public class getAudio {
 
-	public void diaoyong() {
+	public String Record() {
 		// TODO Auto-generated method stub
+		String fliePath = null;
 		
+		 return (fliePath);
 	}
 	
 	
