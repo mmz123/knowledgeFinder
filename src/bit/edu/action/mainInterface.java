@@ -20,6 +20,13 @@ import bit.edu.service.getAudio;
  * 功能1：接收AudioToText输出的问题文本并输出
  * 功能2：接收用户直接输入的问题文本并输出
  * 
+ * 文本框2功能：
+ * 功能1：接收按模板转换后的标准问题
+ * 功能2：接收用户修改后的文本
+ * 
+ * 文本框3功能：
+ * 接收ModelToQuery
+ * 
  * @author lenovo
  *
  */
