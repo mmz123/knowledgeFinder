@@ -64,6 +64,9 @@ public class recordInterface extends JDialog{
 				String AnswerText = audioToText.AnswerText();
 				System.out.println(AnswerText);
 				recordInterface.this.content = AnswerText;
+				
+				
+				
 			}
 		});
 		

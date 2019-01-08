@@ -86,6 +86,9 @@ public class mainInterface extends JFrame{
 				//将音频转换的文本显示到文本框1中
 				textBox1.setText(recordinterface.getAtext());
 				
+				
+				
+				
 			}
 		});
 		
