@@ -10,5 +10,15 @@ package bit.edu.service;
  */
 
 public class Neo4jQuery {
+	
+	
+	public String Answer(){
+		
+		String answer;
+		
+		
+		
+		return null;
+	}
 
 }
