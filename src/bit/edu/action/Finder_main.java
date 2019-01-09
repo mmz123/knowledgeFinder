@@ -18,7 +18,7 @@ public class Finder_main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new mainInterface().CreatInterface("问答系统");
+					new MainInterface().CreatInterface("问答系统");
 					
 				} catch (Exception e) {
 					e.printStackTrace();

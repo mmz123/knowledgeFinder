@@ -30,7 +30,7 @@ public class recordInterface extends JDialog{
 	private String content;
 	private String content1;
 	
-	public recordInterface(mainInterface mainInterface) {
+	public recordInterface(MainInterface mainInterface) {
 		// TODO Auto-generated constructor stub
 		//实例化一个JDialog类对象，指定对话框的父窗体、窗体标题和类型
 		super(mainInterface, "录音窗口", true);
@@ -43,6 +43,7 @@ public class recordInterface extends JDialog{
 		
 		//录音结束按钮
 		JButton button = new JButton("提交");
+		button.setToolTipText("录音结束");
 		button.setBackground(SystemColor.window);
 		button.setBounds(180, 50, 60, 36);
 		button.setFocusPainted(false);
@@ -55,10 +56,10 @@ public class recordInterface extends JDialog{
 				//关闭当前窗体，不关闭父窗口
 				dispose();
 				
-/**
-* 停止录音，getAudio程序运行结束
-*/
-				
+			/**
+			* 停止录音，getAudio程序运行结束
+			*/
+			
 				
 				
 				//运行语音识别程序，读取识别转换的文字
@@ -73,10 +74,10 @@ public class recordInterface extends JDialog{
 				Match match = new Match();
 				//文本框2要接收的与模板匹配之后的最终的问题文本
 				String finalText = match.finalText();
+				//测试
 				System.out.println("测试  "+finalText);
 				recordInterface.this.content1 = finalText;
-
-				
+			
 //				//文本框2要接收的与模板匹配之后的最终的问题文本
 //				String finalText = match.finalText();
 //				System.out.println(finalText);

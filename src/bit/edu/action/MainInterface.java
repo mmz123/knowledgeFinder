@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import bit.edu.service.ModelModify;
 import bit.edu.service.getAudio;
 
 
@@ -35,11 +36,12 @@ import bit.edu.service.getAudio;
  *
  */
 
-public class mainInterface extends JFrame{
+public class MainInterface extends JFrame{
 //	private JPanel contentPane;
-	private JTextField textBox1;
-	private JTextField textBox2;
+	public JTextField textBox1;
+	public JTextField textBox2;
 //	private JTextField textBox3;
+	private String content;
 
 	
 	/**
@@ -103,7 +105,7 @@ public class mainInterface extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				//使recordInterface窗体可见
-				recordInterface recordinterface  = new recordInterface(mainInterface.this);
+				recordInterface recordinterface = new recordInterface(MainInterface.this);
 				recordinterface.setVisible(true);
 				
 				
@@ -116,23 +118,38 @@ public class mainInterface extends JFrame{
 				
 //				//将匹配模板之后的标准问题文本显示到文本框2中
 				textBox2.setText(recordinterface.getFinaltext());
-				
+
 			}
 		});
 		
-		
-		
-		
+
 
 
 		//确认按钮
-		JButton button = new JButton("确认");
-		button.setToolTipText("问题无误确认");
-		button.setBackground(SystemColor.control);
-		button.setFont(new Font("宋体", Font.PLAIN, 12));
-		button.setBounds(650, 90, 80, 36);
-		button.setFocusPainted(false);
-		contentPane.add(button);
+		JButton confirm = new JButton("确认");
+		confirm.setToolTipText("问题无误确认");
+		confirm.setBackground(SystemColor.control);
+		confirm.setFont(new Font("宋体", Font.PLAIN, 16));
+		confirm.setBounds(650, 90, 80, 36);
+		confirm.setFocusPainted(false);
+		contentPane.add(confirm);
+		//为确认按钮添加鼠标单击事件
+		confirm.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				//点击确认按钮之后，运行ModelModify获取文本框2里面的内容
+				ModelModify modelModify = new ModelModify();
+				modelModify.fiText();
+
+				
+			}
+		});
+
+		
+		
 		
 		//文本框3
 		textBox3 textBox3 = new textBox3();
@@ -151,7 +168,9 @@ public class mainInterface extends JFrame{
 
 		
 	}
-
+	public String getFinaltext(){
+		return content;
+	}
 }
 
 
