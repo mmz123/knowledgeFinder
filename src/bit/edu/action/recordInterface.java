@@ -78,10 +78,6 @@ public class recordInterface extends JDialog{
 				System.out.println("测试  "+normalText);
 				recordInterface.this.content1 = normalText;
 			
-//				//文本框2要接收的与模板匹配之后的最终的问题文本
-//				String finalText = match.finalText();
-//				System.out.println(finalText);
-//				recordInterface.this.content = finalText;
 				
 				
 				

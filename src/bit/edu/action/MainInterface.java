@@ -7,8 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import bit.edu.service.ModelModify;
-import bit.edu.service.getAudio;
+import bit.edu.service.*;
 
 /**
  * 主界面设计，包含文本框、按钮的尺寸、位置设置 弹出的录音窗口的设置
@@ -17,7 +16,7 @@ import bit.edu.service.getAudio;
  * 
  * 文本框2功能： 功能1：接收按模板转换后的标准问题 功能2：支持用户对问题的部分文本做修改 功能3：返回用户修改后的内容
  * 
- * 文本框3功能： 功能1：接收ModelToQuery返回的查询语句 
+ * 文本框3功能： 功能1：接收ModelToQuery返回的查询语句
  * 
  * 
  * 
@@ -76,7 +75,7 @@ public class MainInterface extends JFrame {
 
 		// 文本框3
 		textBox3 = new JTextField();
-		
+
 		textBox3.setHorizontalAlignment(SwingConstants.LEFT);
 		textBox3.setFont(new Font("宋体", Font.PLAIN, 20));
 		textBox3.setBounds(25, 155, 600, 36);
@@ -85,9 +84,6 @@ public class MainInterface extends JFrame {
 		textBox3.setVisible(true);
 
 		contentPane.add(textBox3);
-
-		
-		
 
 		// 录音按钮
 		JButton record = new JButton("");
@@ -113,7 +109,7 @@ public class MainInterface extends JFrame {
 				// 将音频转换的文本显示到文本框1中
 				textBox1.setText(recordinterface.getQuetiontext());
 
-				// //将匹配模板之后的标准问题文本显示到文本框2中
+				// 将匹配模板之后的标准问题文本显示到文本框2中
 				textBox2.setText(recordinterface.getFinaltext());
 
 			}
@@ -141,8 +137,9 @@ public class MainInterface extends JFrame {
 				ModelModify modelModify = new ModelModify();
 				modelModify.getfiText("测试" + finaltext);
 
-				// 文本框3的内容
-				
+				// 文本框3的内容，运行ModelToQuery，返回Neo4j查询语句
+				ModelToQuery modelToQuery = new ModelToQuery();
+				textBox3.setText(modelToQuery.QueryText());
 				
 				
 

@@ -11,7 +11,7 @@ package bit.edu.service;
 public class Match {
 	
 	public String normalText(){
-		String finalText = new String();
+		String finalText;
 		
 		finalText = "88";
 		return finalText;
