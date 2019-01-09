@@ -27,7 +27,7 @@ import bit.edu.service.getAudio;
  * 功能3：返回用户修改后的内容
  * 
  * 文本框3功能：
- * 功能1：接收ModelToQuery返回的问题文本
+ * 功能1：接收ModelToQuery返回的查询语句
  * 
  * 
  * 
@@ -80,10 +80,9 @@ public class mainInterface extends JFrame{
 		textBox2.setVisible(true);
 				
 		contentPane.add(textBox2);
-				
 //		textBox2.setText("model question");
 
-		//在textBox2中定义格式之后的添加方式		
+		//在textBox2中定义其属性格式之后在这里添加的方式		
 //		textBox2 textBox2 = new textBox2();
 //		contentPane.add(textBox2.textBox_v2());
 
