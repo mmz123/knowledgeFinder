@@ -11,12 +11,14 @@ package bit.edu.service;
 
 public class Neo4jQuery {
 	
-	
+	//返回答案
 	public String Answer(){
 		
 		String answer;
 		
-		
+		answer = "xx导弹的研发机构：xxx"
+				+ "xx导弹的射程：xx"
+				+ "……";
 		
 		return null;
 	}

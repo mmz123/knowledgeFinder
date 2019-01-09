@@ -14,6 +14,7 @@ public class ModelToQuery {
 	public String QueryText() {
 		String queryText;
 		
+		
 		queryText = "xdj6nb";
 		
 		return queryText;
