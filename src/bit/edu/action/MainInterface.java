@@ -85,6 +85,19 @@ public class MainInterface extends JFrame {
 
 		contentPane.add(textBox3);
 
+		// 答案框
+		JTextArea AnswerBox = new JTextArea();
+		AnswerBox.setFont(new Font("宋体", Font.PLAIN, 20));
+		AnswerBox.setBounds(25, 220, 360, 320);
+		AnswerBox.setColumns(20);
+		AnswerBox.setLineWrap(true);// 自动换行
+
+		JScrollPane jsp = new JScrollPane(AnswerBox); // 添加滚动条
+		AnswerBox.setBounds(25, 220, 360, 600); // 设置 JTextArea 宽100,高500
+		jsp.setBounds(25, 220, 360, 320); // 设置 JScrollPane 宽100,高200
+
+		contentPane.add(AnswerBox);
+
 		// 录音按钮
 		JButton record = new JButton("");
 		record.setBackground(SystemColor.window);
@@ -137,19 +150,17 @@ public class MainInterface extends JFrame {
 				ModelModify modelModify = new ModelModify();
 				modelModify.getfiText("测试" + finaltext);
 
-				// 文本框3的内容，运行ModelToQuery，返回Neo4j查询语句
+				// 文本框3的内容，运行ModelToQuery，返回Neo4j查询语句，不可编辑
 				ModelToQuery modelToQuery = new ModelToQuery();
 				textBox3.setText(modelToQuery.QueryText());
-				
-				
+				textBox3.setEditable(false);
+
+				// AnswerBox的内容，运行Neo4jQuery，以文本形式返回Neo4j的查询结果
+				Neo4jQuery neo4jQuery = new Neo4jQuery();
+				AnswerBox.setText(neo4jQuery.Answer());
 
 			}
 		});
-
-		// 答案框
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(25, 220, 360, 320);
-		contentPane.add(textArea);
 
 		// 图谱展示
 		Canvas canvas = new Canvas();

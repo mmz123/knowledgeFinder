@@ -42,14 +42,15 @@ public class recordInterface extends JDialog{
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		//录音结束按钮
-		JButton button = new JButton("提交");
-		button.setToolTipText("录音结束");
-		button.setBackground(SystemColor.window);
-		button.setBounds(180, 50, 60, 36);
-		button.setFocusPainted(false);
-		container.add(button);
+		JButton submit = new JButton("提交");
+		submit.setToolTipText("录音结束");
+		submit.setBackground(SystemColor.window);
+		submit.setFont(new Font("宋体", Font.PLAIN, 16));
+		submit.setBounds(180, 50, 75, 36);
+		submit.setFocusPainted(false);
+		container.add(submit);
 		//为录音按钮添加鼠标单击事件
-		button.addActionListener(new ActionListener(){
+		submit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub

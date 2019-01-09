@@ -16,11 +16,17 @@ public class Neo4jQuery {
 		
 		String answer;
 		
+		
+		
+		
+		
+		
+		
 		answer = "xx导弹的研发机构：xxx"
 				+ "xx导弹的射程：xx"
 				+ "……";
 		
-		return null;
+		return answer;
 	}
 
 }
