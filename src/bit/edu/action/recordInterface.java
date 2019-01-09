@@ -72,7 +72,7 @@ public class recordInterface extends JDialog{
 							
 				//运行Match匹配程序
 				Match match = new Match();
-				//文本框2要接收的与模板匹配之后的最终的问题文本
+				//文本框2要接收的与模板匹配之后的标准问题文本
 				String finalText = match.finalText();
 				//测试
 				System.out.println("测试  "+finalText);

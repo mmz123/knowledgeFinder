@@ -41,7 +41,7 @@ public class MainInterface extends JFrame{
 	public JTextField textBox1;
 	public JTextField textBox2;
 //	private JTextField textBox3;
-	private String content;
+
 
 	
 	/**
@@ -141,9 +141,16 @@ public class MainInterface extends JFrame{
 				// TODO Auto-generated method stub
 				
 				//点击确认按钮之后，运行ModelModify获取文本框2里面的内容
+//				ModelModify modelModify = new ModelModify();
+//				modelModify.fiText();
+				String fitext = textBox2.getText();
 				ModelModify modelModify = new ModelModify();
-				modelModify.fiText();
-
+				modelModify.getfiText("测试"+fitext);
+				
+				//文本框3的内容
+				
+				
+				
 				
 			}
 		});
@@ -168,9 +175,7 @@ public class MainInterface extends JFrame{
 
 		
 	}
-	public String getFinaltext(){
-		return content;
-	}
+	
 }
 
 
