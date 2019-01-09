@@ -9,6 +9,5 @@ package bit.edu.service;
 
 public class Record {
 	
-	
-	
+		
 }
