@@ -146,32 +146,27 @@ public class getAudio {
 	            AudioSystem.write(ais, AudioFileFormat.Type.WAVE, file);
 
 	        } catch (Exception e) {
-
 	            e.printStackTrace();
 
 	        }finally{
 
 	        	//关闭流
 	        	try {
-
 	        		if(bais != null){
-
+	        			
 	        			bais.close();
-
 	        		} 
 
 	        		if(ais != null){
 
 	        			ais.close();		
-
 	        		}
 
 				} catch (Exception e) {
 
 					e.printStackTrace();
-
-				}   	
-
+					
+				}
 	        }
 	        String filePath = "E:/sources/Audio/test1";      
 			return filePath;
