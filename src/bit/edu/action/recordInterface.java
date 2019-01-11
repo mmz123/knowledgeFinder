@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 
 import bit.edu.service.AudioToText;
 import bit.edu.service.Match;
+import bit.edu.service.getAudio;
 
 /**
  * 1.在主界面点击录音按钮之后，弹出录音窗口，调用getAudio程序
@@ -60,6 +61,14 @@ public class recordInterface extends JDialog{
 			/**
 			* 停止录音，getAudio程序运行结束
 			*/
+				System.out.println("61");
+				getAudio getAudio = new getAudio();
+				getAudio.StopRecord();
+				System.out.println("62");
+				
+				//存储录音文件，返回文件路径
+				getAudio.save();
+				System.out.println("63");
 			
 				
 				

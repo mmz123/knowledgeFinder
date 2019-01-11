@@ -111,13 +111,19 @@ public class MainInterface extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				// 使recordInterface窗体可见
-				recordInterface recordinterface = new recordInterface(MainInterface.this);
-				recordinterface.setVisible(true);
+				
+				System.out.println("1");
 
 				// 调用Record录音程序
 				getAudio getAudio = new getAudio();
 				getAudio.Record();
+				System.out.println("4");
+				
+				
+				// 使recordInterface窗体可见
+				recordInterface recordinterface = new recordInterface(MainInterface.this);
+				recordinterface.setVisible(true);
+				
 
 				// 将音频转换的文本显示到文本框1中
 				textBox1.setText(recordinterface.getQuetiontext());
