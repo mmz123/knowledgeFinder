@@ -113,11 +113,9 @@ public class MainInterface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				System.out.println("1");
-
+				
 				// 调用Record录音程序
 				getAudio.Record();
-				System.out.println("4");
 				
 				
 				// 使recordInterface窗体可见

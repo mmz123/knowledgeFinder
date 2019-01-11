@@ -30,6 +30,7 @@ public class recordInterface extends JDialog {
 	
 	private String content;
 	private String content1;
+	private String questionText;
 	
 	public recordInterface(MainInterface mainInterface) {
 		// TODO Auto-generated constructor stub
@@ -61,21 +62,22 @@ public class recordInterface extends JDialog {
 			/**
 			* 停止录音，getAudio程序运行结束
 			*/
-				System.out.println("61");
 				mainInterface.getGetAudio().StopRecord();
-				System.out.println("62");
-				
+								
 				//存储录音文件，返回文件路径
-				System.out.println("71");
 				mainInterface.getGetAudio().Save();
-				System.out.println("72");
-			
+							
 				
 				
 				//运行语音识别程序，读取识别转换的文字
 				AudioToText audioToText = new AudioToText();
 				//textBox1要接收的转换后的文本
-				String questionText = audioToText.questionText();
+				try {
+					questionText = audioToText.questionText();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				//测试
 				System.out.println("测试  "+questionText);
 				recordInterface.this.content = questionText;

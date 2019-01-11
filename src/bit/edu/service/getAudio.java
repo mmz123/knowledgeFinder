@@ -199,7 +199,6 @@ public class getAudio {
 					// 要读取bts.length长度的字节,cnt 是实际读取的字节数
 					int cnt = td.read(bts, 0, bts.length);
 					if (cnt > 0) {
-
 						baos.write(bts, 0, cnt);
 					}
 					getAudio.this.audioData = baos.toByteArray();
@@ -213,7 +212,6 @@ public class getAudio {
 			} finally {
 
 				try {
-
 					// 关闭打开的字节数组流
 					if (baos != null) {
 
@@ -228,7 +226,6 @@ public class getAudio {
 				} finally {
 
 					td.drain();
-
 					td.close();
 				}
 			}
@@ -238,21 +235,14 @@ public class getAudio {
 	}
 
 	// 播放录音
-
-	public void play()
-
-	{
+	public void play(){
 
 		// 将baos中的数据转换为字节数据
-
 		audioData = baos.toByteArray();
 
 		// 转换为输入流
-
 		bais = new ByteArrayInputStream(audioData);
-
 		af = getAudioFormat();
-
 		ais = new AudioInputStream(bais, af, audioData.length / af.getFrameSize());
 
 		try {
@@ -260,9 +250,7 @@ public class getAudio {
 			DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, af);
 
 			sd = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
-
 			sd.open(af);
-
 			sd.start();
 
 			// 创建播放进程
@@ -283,25 +271,18 @@ public class getAudio {
 
 				// 关闭流
 
-				if (ais != null)
-
-				{
+				if (ais != null){
 
 					ais.close();
-
 				}
 
-				if (bais != null)
-
-				{
+				if (bais != null){
 
 					bais.close();
 
 				}
 
-				if (baos != null)
-
-				{
+				if (baos != null){
 
 					baos.close();
 
@@ -310,16 +291,13 @@ public class getAudio {
 			} catch (Exception e) {
 
 				e.printStackTrace();
-
 			}
 		}
 	}
 	
 	//播放类,同样也做成内部类
 
-		class Play implements Runnable
-
-		{
+		class Play implements Runnable{
 
 			//播放baos中的数据即可
 
@@ -337,14 +315,10 @@ public class getAudio {
 
 		            {
 
-		                if (cnt > 0) 
-
-		                {
-
+		                if (cnt > 0){
+		                	
 		                    //写入缓存数据
-
 		                    //将音频数据写入到混频器
-
 		                    sd.write(bts, 0, cnt);
 
 		                }
@@ -360,7 +334,6 @@ public class getAudio {
 				}finally{
 
 					 sd.drain();
-
 			         sd.close();
 
 				}

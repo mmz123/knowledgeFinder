@@ -55,17 +55,16 @@ public class AudioToText {
 	static String cuid = "70-4D-7B-3F-61-02";
 
 	// 读取录音文件,调用百度接口识别，识别音频文件，返回问题文本
-	
-	public String questionText() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public String questionText(String path) {
 
-		testFileName = path;
+	public String questionText() throws Exception{
+		
+		String questionText;
 
-		questionText = "pp";
+		getToken();
+		// method1();
+        FormatChange formatChange = new FormatChange();
+        
+        questionText = method(formatChange.Format("E:/sources/Audio/test1.mp3"));
 
 		return questionText;
 	}
@@ -80,9 +79,10 @@ public class AudioToText {
 	}
 
 	// 语音识别的方法
-	private static void method() throws Exception {
+	private static String method(String path) throws Exception {
 
-		File pcmFile = new File(testFileName);
+		String s = null;
+		File pcmFile = new File(path);
 		HttpURLConnection conn = (HttpURLConnection) new URL(serverURL + "?cuid=" + cuid + "&token=" + token)
 				.openConnection();
 
@@ -99,6 +99,10 @@ public class AudioToText {
 		wr.flush();
 		wr.close();
 		System.out.println(getUtf8String(printResponse(conn)));
+		
+		s = getUtf8String(printResponse(conn));
+		return s;
+		
 	}
 
 	public static String printResponse(HttpURLConnection conn) throws Exception {
@@ -127,7 +131,7 @@ public class AudioToText {
 
 		FileWriter fw = null;
 		try {
-			fw = new FileWriter("C:\\zhongzhuan\\识别结果.txt", true);
+			fw = new FileWriter("E:/sources/Audio/test1.txt", true);
 			fw.write(new JSONObject(response.toString()).toString(1));// 这里向文件中输入结果123
 			fw.flush();
 		} catch (FileNotFoundException e) {
@@ -156,16 +160,13 @@ public class AudioToText {
 		byte[] bytes = new byte[(int) length];
 		int offset = 0;
 		int numRead = 0;
-		while (offset < bytes.length
-				&& (numRead = is.read(bytes, offset, bytes.length - offset)) >= 0) {
+		while (offset < bytes.length && (numRead = is.read(bytes, offset, bytes.length - offset)) >= 0) {
 			offset += numRead;
 
 		}
-
 		if (offset < bytes.length) {
 			is.close();
 			throw new IOException("Could not completely read file " + file.getName());
-
 		}
 		is.close();
 		return bytes;
@@ -174,7 +175,7 @@ public class AudioToText {
 
 	// GBK编码转为UTF-8
 
-	private static String getUtf8String(String s) throws UnsupportedEncodingException{
+	private static String getUtf8String(String s) throws UnsupportedEncodingException {
 
 		StringBuffer sb = new StringBuffer();
 		sb.append(s);
@@ -182,11 +183,9 @@ public class AudioToText {
 		String xmlUtf8 = "";
 		xmlString = new String(sb.toString().getBytes("GBK"));
 		xmlUtf8 = URLEncoder.encode(xmlString, "GBK");
-		
+
 		return URLDecoder.decode(xmlUtf8, "UTF-8");
 
 	}
-
-
 
 }
