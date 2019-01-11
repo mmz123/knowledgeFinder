@@ -26,7 +26,7 @@ import bit.edu.service.getAudio;
  * @author lenovo
  *
  */
-public class recordInterface extends JDialog{
+public class recordInterface extends JDialog {
 	
 	private String content;
 	private String content1;
@@ -67,8 +67,9 @@ public class recordInterface extends JDialog{
 				System.out.println("62");
 				
 				//存储录音文件，返回文件路径
+				System.out.println("71");
 				getAudio.save();
-				System.out.println("63");
+				System.out.println("72");
 			
 				
 				

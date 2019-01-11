@@ -46,8 +46,6 @@ public class getAudio {
 	 * 点击录音按钮，开始录音
 	 * 
 	 * @return
-	 * 
-	 * @return
 	 */
 	public void Record() {
 		// TODO Auto-generated method stub
@@ -63,6 +61,14 @@ public class getAudio {
 
 			// 允许某一数据行执行数据 I/O
 			td.start();
+
+			// 创建播放录音的线程
+
+			Record record = new Record();
+
+			Thread t1 = new Thread(record);
+
+			t1.start();
 
 		} catch (LineUnavailableException ex) {
 
@@ -95,7 +101,7 @@ public class getAudio {
 
 		System.out.println("3");
 
-		return new AudioFormat(encoding, rate, sampleSize, channels, (sampleSize /8) * channels, rate, bigEndian);
+		return new AudioFormat(encoding, rate, sampleSize, channels, (sampleSize / 8) * channels, rate, bigEndian);
 
 	}
 
@@ -104,81 +110,74 @@ public class getAudio {
 	 */
 
 	public void StopRecord() {
-		
+
 		// 停止录音
 		stopflag = true;
-		
+
 	}
 
-	
-	
-	
-	//保存录音
-		public String save(){
-			 //取得录音输入流
-	        af = getAudioFormat();
+	// 保存录音
+	public String save() {
+		System.out.println("11111111");
+		// 取得录音输入流
+		af = getAudioFormat();
 
-	        byte audioData[] = baos.toByteArray();
+		byte audioData[] = baos.toByteArray();
+		System.out.println("222222");
+		bais = new ByteArrayInputStream(audioData);
 
-	        bais = new ByteArrayInputStream(audioData);
+		ais = new AudioInputStream(bais, af, audioData.length / af.getFrameSize());
 
-	        ais = new AudioInputStream(bais,af, audioData.length / af.getFrameSize());
+		// 定义最终保存的文件名
+		File file = null;
 
-	        //定义最终保存的文件名
-	        File file = null;
+		// 写入文件
+		try {
 
-	        //写入文件
-	        try {	
+			// 以当前的时间命名录音的名字
+			// 将录音的文件存放到F盘下语音文件夹下
+			File filePath = new File("E:/sources/Audio");
 
-	        	//以当前的时间命名录音的名字
-	        	//将录音的文件存放到F盘下语音文件夹下
-	        	File filePath = new File("E:/sources/Audio");
+			if (!filePath.exists()) {
 
-	        	if(!filePath.exists()){
-	        		
-	        		//如果文件不存在，则创建该目录
-	        		filePath.mkdir();
+				// 如果文件不存在，则创建该目录
+				filePath.mkdir();
+			}
 
-	        	}
+			// System.out.println("222222");
+			file = new File(filePath.getPath() + "/" + "test1" + ".mp3");
+			AudioSystem.write(ais, AudioFileFormat.Type.WAVE, file);
 
-	        	file = new File(filePath.getPath()+"/"+"test1"+".mp3");      
+		} catch (Exception e) {
+			e.printStackTrace();
 
-	            AudioSystem.write(ais, AudioFileFormat.Type.WAVE, file);
+		} finally {
 
-	        } catch (Exception e) {
-	            e.printStackTrace();
+			// 关闭流
+			try {
+				if (bais != null) {
 
-	        }finally{
-
-	        	//关闭流
-	        	try {
-	        		if(bais != null){
-	        			
-	        			bais.close();
-	        		} 
-
-	        		if(ais != null){
-
-	        			ais.close();		
-	        		}
-
-				} catch (Exception e) {
-
-					e.printStackTrace();
-					
+					bais.close();
 				}
-	        }
-	        String filePath = "E:/sources/Audio/test1";      
-			return filePath;
 
+				if (ais != null) {
+
+					ais.close();
+				}
+
+			} catch (Exception e) {
+
+				e.printStackTrace();
+
+			}
 		}
+		String filePath = "E:/sources/Audio/test1.mp3";
+		return filePath;
 
-		
-		
-		
-	
-	//录音类，因为要用到MyRecord类中的变量，所以将其做成内部类
-	class Record implements Runnable{
+	}
+
+	// 录音类，因为要用到MyRecord类中的变量，所以将其做成内部类
+	class Record implements Runnable {
 
 		// 定义存放录音的字节数组,作为缓冲区
 		byte bts[] = new byte[10000];
@@ -192,13 +191,13 @@ public class getAudio {
 
 				System.out.println("ok3");
 				stopflag = false;
-				while (stopflag != true){
+				while (stopflag != true) {
 
 					// 当停止录音没按下时，该线程一直执行
 					// 从数据行的输入缓冲区读取音频数据。
 					// 要读取bts.length长度的字节,cnt 是实际读取的字节数
 					int cnt = td.read(bts, 0, bts.length);
-					if (cnt > 0){
+					if (cnt > 0) {
 
 						baos.write(bts, 0, cnt);
 
@@ -214,7 +213,7 @@ public class getAudio {
 				try {
 
 					// 关闭打开的字节数组流
-					if (baos != null){
+					if (baos != null) {
 
 						baos.close();
 
@@ -235,5 +234,136 @@ public class getAudio {
 		}
 
 	}
+
+	// 播放录音
+
+	public void play()
+
+	{
+
+		// 将baos中的数据转换为字节数据
+
+		byte audioData[] = baos.toByteArray();
+
+		// 转换为输入流
+
+		bais = new ByteArrayInputStream(audioData);
+
+		af = getAudioFormat();
+
+		ais = new AudioInputStream(bais, af, audioData.length / af.getFrameSize());
+
+		try {
+
+			DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, af);
+
+			sd = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
+
+			sd.open(af);
+
+			sd.start();
+
+			// 创建播放进程
+
+			Play py = new Play();
+
+			Thread t2 = new Thread(py);
+
+			t2.start();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+
+				// 关闭流
+
+				if (ais != null)
+
+				{
+
+					ais.close();
+
+				}
+
+				if (bais != null)
+
+				{
+
+					bais.close();
+
+				}
+
+				if (baos != null)
+
+				{
+
+					baos.close();
+
+				}
+
+			} catch (Exception e) {
+
+				e.printStackTrace();
+
+			}
+		}
+	}
+	
+	//播放类,同样也做成内部类
+
+		class Play implements Runnable
+
+		{
+
+			//播放baos中的数据即可
+
+			public void run() {
+
+				byte bts[] = new byte[10000];
+
+				try {
+
+					int cnt;
+
+		            //读取数据到缓存数据
+
+		            while ((cnt = ais.read(bts, 0, bts.length)) != -1) 
+
+		            {
+
+		                if (cnt > 0) 
+
+		                {
+
+		                    //写入缓存数据
+
+		                    //将音频数据写入到混频器
+
+		                    sd.write(bts, 0, cnt);
+
+		                }
+
+		            }
+
+		           
+
+				} catch (Exception e) {
+
+					e.printStackTrace();
+
+				}finally{
+
+					 sd.drain();
+
+			         sd.close();
+
+				}
+			}		
+		}
+	
 
 }
