@@ -41,6 +41,8 @@ public class getAudio {
 
 	// 定义停止录音的标志，来控制录音线程的运行
 	Boolean stopflag = false;
+	
+	private byte[] audioData;
 
 	/**
 	 * 点击录音按钮，开始录音
@@ -117,12 +119,11 @@ public class getAudio {
 	}
 
 	// 保存录音
-	public String save() {
+	public void Save() {
 		System.out.println("11111111");
 		// 取得录音输入流
 		af = getAudioFormat();
 
-		byte audioData[] = baos.toByteArray();
 		System.out.println("222222");
 		bais = new ByteArrayInputStream(audioData);
 
@@ -171,8 +172,8 @@ public class getAudio {
 
 			}
 		}
-		String filePath = "E:/sources/Audio/test1.mp3";
-		return filePath;
+//		String filePath = "E:/sources/Audio/test1.mp3";
+//		return filePath;
 
 	}
 
@@ -200,9 +201,10 @@ public class getAudio {
 					if (cnt > 0) {
 
 						baos.write(bts, 0, cnt);
-
 					}
+					getAudio.this.audioData = baos.toByteArray();
 				}
+				
 
 			} catch (Exception e) {
 
@@ -243,7 +245,7 @@ public class getAudio {
 
 		// 将baos中的数据转换为字节数据
 
-		byte audioData[] = baos.toByteArray();
+		audioData = baos.toByteArray();
 
 		// 转换为输入流
 

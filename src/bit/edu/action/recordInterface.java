@@ -62,13 +62,12 @@ public class recordInterface extends JDialog {
 			* 停止录音，getAudio程序运行结束
 			*/
 				System.out.println("61");
-				getAudio getAudio = new getAudio();
-				getAudio.StopRecord();
+				mainInterface.getGetAudio().StopRecord();
 				System.out.println("62");
 				
 				//存储录音文件，返回文件路径
 				System.out.println("71");
-				getAudio.save();
+				mainInterface.getGetAudio().Save();
 				System.out.println("72");
 			
 				

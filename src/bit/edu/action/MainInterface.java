@@ -29,6 +29,7 @@ public class MainInterface extends JFrame {
 	public JTextField textBox1;
 	public JTextField textBox2;
 	private JTextField textBox3;
+	private getAudio getAudio = new getAudio();
 
 	/**
 	 * 
@@ -115,7 +116,6 @@ public class MainInterface extends JFrame {
 				System.out.println("1");
 
 				// 调用Record录音程序
-				getAudio getAudio = new getAudio();
 				getAudio.Record();
 				System.out.println("4");
 				
@@ -175,5 +175,15 @@ public class MainInterface extends JFrame {
 		contentPane.add(canvas);
 
 	}
+
+	public getAudio getGetAudio() {
+		return getAudio;
+	}
+
+	public void setGetAudio(getAudio getAudio) {
+		this.getAudio = getAudio;
+	}
+	
+	
 
 }
