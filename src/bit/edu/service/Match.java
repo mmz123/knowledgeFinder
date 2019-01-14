@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 1.接收textProcess的输出，将处理过的文本与问题模板融合 2.返回融合后的标准问题
+ * 1.接收textProcess的输出，将处理过的文本与问题模板融合 
  * 
  * @author me
  *
@@ -26,11 +26,11 @@ public class Match {
 
 	// 匹配模板
 	public static String Matching() {
-		String pathname2 = "c:\\zhongzhuan\\1234.txt"; // 匹配模板程序读入文件路径
-		String str3 = "";// 存放完成词性标注后的问题
-		String s1 = "";// 存放问题中的实体和关系
+		String pathname2 = "E:/sources/Audio/PosTag.txt"; // 匹配模板程序读入文件路径
+		String str3 = null;// 存放完成词性标注后的问题
+		String s1 = null;// 存放问题中的实体和关系
 		int a = 0;
-		String m = "";
+		String m = null;
 		try (FileReader reader1 = new FileReader(pathname2); BufferedReader br = new BufferedReader(reader1) // 建立一个对象，它把文件内容转成计算机能读懂的语言
 		) {
 			String line2;
@@ -88,7 +88,7 @@ public class Match {
 		}
 		FileWriter fw = null;
 		try {
-			fw = new FileWriter("C:\\zhongzhuan\\12345.txt", true);// 实体和关系的输出路径
+			fw = new FileWriter("E:/sources/Audio/Relation.txt", true);// 实体和关系的输出路径
 			fw.write(s1);// 这里将提取到的实体、关系等关键词输出到上述路径的文本文档
 			fw.flush();
 		} catch (FileNotFoundException e) {

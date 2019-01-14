@@ -1,29 +1,17 @@
 package bit.edu.service;
 
 import java.io.BufferedReader;
-
 import java.io.DataOutputStream;
-
 import java.io.File;
-
 import java.io.FileInputStream;
-
 import java.io.IOException;
-
 import java.io.InputStream;
-
 import java.io.InputStreamReader;
-
 import java.io.UnsupportedEncodingException;
-
 import java.net.HttpURLConnection;
-
 import java.net.URL;
-
 import java.net.URLDecoder;
-
 import java.net.URLEncoder;
-
 import javax.xml.bind.DatatypeConverter;
 
 import org.json.JSONObject;
@@ -247,6 +235,7 @@ public class AudioToText {
 		}
 
 		System.out.println("从百度语音识别结果中提取有效信息");
+		System.out.println("questionText = " + questionText);
 		return questionText;
 	}
 

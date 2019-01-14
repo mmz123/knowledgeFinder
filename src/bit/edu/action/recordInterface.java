@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 
 import bit.edu.service.AudioToText;
 import bit.edu.service.Match;
+import bit.edu.service.TextProcess;
 import bit.edu.service.getAudio;
 
 /**
@@ -82,10 +83,10 @@ public class recordInterface extends JDialog {
 				System.out.println("文本框1   "+questionText);
 				recordInterface.this.content = questionText;
 							
-				//运行Match匹配程序
-				Match match = new Match();
+				//运行TextProcess对提取的有效文本进行分词和词性标注
+				TextProcess Text_process = new TextProcess();
 				//文本框2要接收的与模板匹配之后的标准问题文本
-				String normalText = match.normalText();
+				String normalText = Text_process.Segment();
 				//测试
 				System.out.println("文本框2   "+normalText);
 				recordInterface.this.content1 = normalText;

@@ -13,21 +13,23 @@ import org.wltea.analyzer.core.IKSegmenter;
 import org.wltea.analyzer.core.Lexeme;
 
 /**
- * 1.对AudioToText输出的问题文本或输入的问题文本分词处理 2.词性标注 3.与问题模板匹配，输出属于哪一类模板
+ * 1.对AudioToText输出的问题文本或输入的问题文本分词处理 2.词性标注 3.将词性标注后的文本输入到文本框2内
  * 
  * @author me
  *
  */
 
-public class textProcess {
+public class TextProcess {
+	public static String normalText;
 
-	// 以下为分词
-	public static String Breakoff() {
+	// 对AudioToText输出的有效文本true.txt分词
+	public static String Segment() {
 		String text = "";// 分词前的字符串（现在只读一行）
 		String pathname1 = "E:/sources/Audio/true.txt";// 读入提取的有效文本文件路径
 		String text2 = "";
-		try (FileReader reader = new FileReader(pathname1); BufferedReader br = new BufferedReader(reader) // 建立一个对象，它把文件内容转成计算机能读懂的语言
-		) {
+		try (FileReader reader = new FileReader(pathname1);
+				// 建立一个对象，它把文件内容转成计算机能读懂的语言
+				BufferedReader br = new BufferedReader(reader)) {
 			String line1;
 
 			while ((line1 = br.readLine()) != null) {
@@ -38,9 +40,7 @@ public class textProcess {
 		}
 
 		StringReader re = new StringReader(text);
-
 		IKSegmenter ik = new IKSegmenter(re, true);
-
 		Lexeme lex = null;
 
 		try {
@@ -54,7 +54,8 @@ public class textProcess {
 					// 将分词结果写入文件segmentationResults.txt
 					fw = new FileWriter("E:/sources/Audio/segmentationResults.txt", true);
 
-					fw.write(lex.getLexemeText() + "/ ");// 这里向文件中输入结果123
+					// 这里向文件中输入结果
+					fw.write(lex.getLexemeText() + "/ ");
 					fw.flush();
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
@@ -76,10 +77,10 @@ public class textProcess {
 
 		}
 
-		try (FileReader reader = new FileReader(pathname1); BufferedReader br = new BufferedReader(reader) // 建立一个对象，它把文件内容转成计算机能读懂的语言
-		) {
+		try (
+				// 建立一个对象，它把文件内容转成计算机能读懂的语言
+				FileReader reader = new FileReader(pathname1); BufferedReader br = new BufferedReader(reader)) {
 			String line3;
-
 			while ((line3 = br.readLine()) != null) {
 				text2 = line3; // 只能读入文档的一行内容
 			}
@@ -87,15 +88,19 @@ public class textProcess {
 			e.printStackTrace();
 		}
 
-		return text2;
+		PosTag();
+		
+		
+		return normalText;
 	}
 
-	// 以下为词性标注
-	public static String Tagging() {
+	// 对Segment方法分词后的结果进行词性标注
+	public static String PosTag() {
 		// 统计出训练样本中词性种类及其频率
 		String content = "";
 		BufferedReader reader = null;
-		try { // 读取train.txt（训练集）文本中的内容，并保存在content的字符流中
+		try { 
+			// 读取train.txt（训练集）文本中的内容，并保存在content的字符流中
 			reader = new BufferedReader(new FileReader("E:/Programme/Project/KG/model/train.txt"));
 			String line2;
 			while ((line2 = reader.readLine()) != null)
@@ -107,6 +112,7 @@ public class textProcess {
 				try {
 					reader.close();
 				} catch (IOException e) {
+					
 				}
 			}
 		}
@@ -319,14 +325,16 @@ public class textProcess {
 
 		try {
 			FileWriter f = new FileWriter("E:/sources/Audio/PosTag.txt");// 完成词性标注后的文本的存放路径
-			for (int i = 0; i < result.length; i++)
+			for (int i = 0; i < result.length; i++){
 				f.write(result[i] + "");
+				normalText = normalText + result[i] + "";
+			}
 			f.flush();
 			f.close();
 		} catch (IOException e) {
 			System.out.println("错误");
 		}
-		return "";
+		return normalText;
 	}
 
 }
