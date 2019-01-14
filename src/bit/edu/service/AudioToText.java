@@ -62,9 +62,10 @@ public class AudioToText {
 		// method1();
 		FormatChange formatChange = new FormatChange();
 
-		RecognitionResult = method(formatChange.Format("E:/sources/Audio/test1.mp3"));
+		method(formatChange.Format("E:/sources/Audio/test1.mp3"));
 		System.out.println("语音识别的主要程序");
 		
+		RecognitionResult = Extract("E:/sources/Audio/test1.txt");
 		
 		return RecognitionResult;
 	}
@@ -101,7 +102,7 @@ public class AudioToText {
 		wr.flush();
 
 		// 注释掉下面那句话减少很多报错，但是文本框1会出现别的东西
-		System.out.println(getUtf8String(printResponse(conn)));
+		//System.out.println(getUtf8String(printResponse(conn)));
 
 		s = getUtf8String(printResponse(conn));
 
@@ -197,15 +198,15 @@ public class AudioToText {
 	}
 
 	// 以下为提取百度返回的有效信息
-	public static String Extract() {
+	public static String Extract(String RecognitionFilePath) {
 		// ------------------------------------------------------------------------------------------------------------------
 		// 以下为提取百度返回结果中的有效信息
 		String str = "";// 存放从百度语音api返回的一行信息
 		String str1 = "";// 存放从百度语音api返回的全部信息
 		String questionText = "";// 存放从str1中提取的有效信息，即完成语音-文字转换后的问题
-		String filePath = "c:\\zhongzhuan\\test1.txt";// 提取百度api返回结果中有效信息的程序读文件路径
+		//String filePath = "c:\\zhongzhuan\\test1.txt";// 提取百度api返回结果中有效信息的程序读文件路径
 
-		try (FileReader reader = new FileReader(filePath); BufferedReader br = new BufferedReader(reader) // 建立一个对象，它把文件内容转成计算机能读懂的语言
+		try (FileReader reader = new FileReader(RecognitionFilePath); BufferedReader br = new BufferedReader(reader) // 建立一个对象，它把文件内容转成计算机能读懂的语言
 		) {
 			String line;
 
@@ -225,7 +226,7 @@ public class AudioToText {
 
 			FileWriter fw = null;
 			try {
-				fw = new FileWriter("C:\\zhongzhuan\\提取后的识别结果.txt", true);
+				fw = new FileWriter("E:/sources/Audio/true.txt", true);
 				fw.write(questionText);// 将
 				fw.flush();
 			} catch (FileNotFoundException e) {
