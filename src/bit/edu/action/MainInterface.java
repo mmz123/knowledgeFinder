@@ -126,6 +126,7 @@ public class MainInterface extends JFrame {
 
 				// 将音频转换的文本显示到文本框1中
 				textBox1.setText(recordinterface.getQuetiontext());
+				
 
 				// 将匹配模板之后的标准问题文本显示到文本框2中
 				textBox2.setText(recordinterface.getFinaltext());
