@@ -79,7 +79,7 @@ public class recordInterface extends JDialog {
 					e1.printStackTrace();
 				}
 				//测试
-				System.out.println("测试  "+questionText);
+				System.out.println("文本框1   "+questionText);
 				recordInterface.this.content = questionText;
 							
 				//运行Match匹配程序
@@ -87,7 +87,7 @@ public class recordInterface extends JDialog {
 				//文本框2要接收的与模板匹配之后的标准问题文本
 				String normalText = match.normalText();
 				//测试
-				System.out.println("测试  "+normalText);
+				System.out.println("文本框2   "+normalText);
 				recordInterface.this.content1 = normalText;
 			
 				

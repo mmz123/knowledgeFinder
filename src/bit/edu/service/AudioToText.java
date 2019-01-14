@@ -46,7 +46,7 @@ public class AudioToText {
 	private static String serverURL = "http://vop.baidu.com/server_api";
 	private static String token = "";
 	private static String testFileName = null; // 百度语音提供技术支持
-	private static String questionText = new String();
+	private static String RecognitionResult = new String();
 
 	// put your own params here
 	// 下面3个值要填写自己申请的app对应的值
@@ -54,20 +54,19 @@ public class AudioToText {
 	String secretKey = "SYV73NWGY5dEjhuWz7msooPdL5204qx5";
 	static String cuid = "70-4D-7B-3F-61-02";
 
-	// 读取转换格式后的录音文件,调用百度接口识别，识别音频文件，返回问题文本
+	// 读取转换格式后的录音文件,调用百度接口识别，识别音频文件，生成的是一个txt文件，txt文件中提取问题文本
 
-	public String questionText() throws Exception{
-		
-		String questionText;
+	public String questionText() throws Exception {
 
 		getToken();
 		// method1();
-        FormatChange formatChange = new FormatChange();
-        
-        questionText = method(formatChange.Format("E:/sources/Audio/test1.mp3"));
-        
-        System.out.println("语音识别的主要程序");
-		return questionText;
+		FormatChange formatChange = new FormatChange();
+
+		RecognitionResult = method(formatChange.Format("E:/sources/Audio/test1.mp3"));
+		System.out.println("语音识别的主要程序");
+		
+		
+		return RecognitionResult;
 	}
 
 	// 链接百度语音识别接口
@@ -100,23 +99,24 @@ public class AudioToText {
 		wr.write(loadFile(pcmFile));
 		wr.close();
 		wr.flush();
-		
-		//注释掉下面那句话减少很多报错
+
+		// 注释掉下面那句话减少很多报错，但是文本框1会出现别的东西
 		System.out.println(getUtf8String(printResponse(conn)));
-		
+
 		s = getUtf8String(printResponse(conn));
-		
-		System.out.println("语音识别方法");
+
+		System.out.println("语音识别方法调用结束");
 		return s;
-		
+
 	}
 
 	public static String printResponse(HttpURLConnection conn) throws Exception {
 
 		if (conn.getResponseCode() != 200) {
 
-			// request error
-			System.out.println("conn.getResponseCode() = " + conn.getResponseCode());
+			// request error不输出错误时注释调下面那句话
+			// System.out.println("conn.getResponseCode() = " +
+			// conn.getResponseCode());
 			return "";
 
 		}
@@ -175,6 +175,7 @@ public class AudioToText {
 			throw new IOException("Could not completely read file " + file.getName());
 		}
 		is.close();
+		System.out.println("loadFile程序调用结束");
 		return bytes;
 
 	}
@@ -190,8 +191,61 @@ public class AudioToText {
 		xmlString = new String(sb.toString().getBytes("GBK"));
 		xmlUtf8 = URLEncoder.encode(xmlString, "GBK");
 
+		System.out.println("GBK转UTF-8调用结束");
 		return URLDecoder.decode(xmlUtf8, "UTF-8");
 
+	}
+
+	// 以下为提取百度返回的有效信息
+	public static String Extract() {
+		// ------------------------------------------------------------------------------------------------------------------
+		// 以下为提取百度返回结果中的有效信息
+		String str = "";// 存放从百度语音api返回的一行信息
+		String str1 = "";// 存放从百度语音api返回的全部信息
+		String questionText = "";// 存放从str1中提取的有效信息，即完成语音-文字转换后的问题
+		String filePath = "c:\\zhongzhuan\\test1.txt";// 提取百度api返回结果中有效信息的程序读文件路径
+
+		try (FileReader reader = new FileReader(filePath); BufferedReader br = new BufferedReader(reader) // 建立一个对象，它把文件内容转成计算机能读懂的语言
+		) {
+			String line;
+
+			while ((line = br.readLine()) != null) {
+				str = line; // 只能读入文档的一行内容
+				str1 = str1 + str;// 这样就能识别多行了
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		String regex = "[\\[].{0,100}[\\]]";// 从百度返回的一大串信息中找到"[....]"的内容，得到的结果就是语音识别后的问题
+		Matcher m = Pattern.compile(regex).matcher(str1);
+		while (m.find()) {
+			System.out.println(m.group());
+			questionText = m.group();
+
+			FileWriter fw = null;
+			try {
+				fw = new FileWriter("C:\\zhongzhuan\\提取后的识别结果.txt", true);
+				fw.write(questionText);// 将
+				fw.flush();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (fw != null) {
+					try {
+						fw.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		System.out.println("从百度语音识别结果中提取有效信息");
+		return questionText;
 	}
 
 }
