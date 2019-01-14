@@ -46,6 +46,7 @@ public class FormatChange extends AudioToText{
 			}
 		}
 
+		System.out.println("MP3转pcm程序调用结束");
 		//return path = "E:/sources/Audio/test1.pcm";
 		return path;
 

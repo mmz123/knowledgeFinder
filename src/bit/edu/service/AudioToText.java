@@ -54,7 +54,7 @@ public class AudioToText {
 	String secretKey = "SYV73NWGY5dEjhuWz7msooPdL5204qx5";
 	static String cuid = "70-4D-7B-3F-61-02";
 
-	// 读取录音文件,调用百度接口识别，识别音频文件，返回问题文本
+	// 读取转换格式后的录音文件,调用百度接口识别，识别音频文件，返回问题文本
 
 	public String questionText() throws Exception{
 		
@@ -65,7 +65,8 @@ public class AudioToText {
         FormatChange formatChange = new FormatChange();
         
         questionText = method(formatChange.Format("E:/sources/Audio/test1.mp3"));
-
+        
+        System.out.println("语音识别的主要程序");
 		return questionText;
 	}
 
@@ -76,6 +77,7 @@ public class AudioToText {
 
 		HttpURLConnection conn = (HttpURLConnection) new URL(getTokenURL).openConnection();
 		token = new JSONObject(printResponse(conn)).getString("access_token");
+		System.out.println("语音识别程序——连接百度接口");
 	}
 
 	// 语音识别的方法
@@ -98,9 +100,13 @@ public class AudioToText {
 		wr.write(loadFile(pcmFile));
 		wr.close();
 		wr.flush();
+		
+		//注释掉下面那句话减少很多报错
 		System.out.println(getUtf8String(printResponse(conn)));
 		
 		s = getUtf8String(printResponse(conn));
+		
+		System.out.println("语音识别方法");
 		return s;
 		
 	}
