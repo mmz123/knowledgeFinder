@@ -51,7 +51,7 @@ public class recordInterface extends JDialog {
 		submit.setBounds(180, 50, 75, 36);
 		submit.setFocusPainted(false);
 		container.add(submit);
-		//为录音按钮添加鼠标单击事件
+		//为提交按钮添加鼠标单击事件
 		submit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -64,9 +64,9 @@ public class recordInterface extends JDialog {
 			*/
 				mainInterface.getGetAudio().StopRecord();
 								
-				//存储录音文件，返回文件路径
+				//存储录音文件
 				mainInterface.getGetAudio().Save();
-							
+				
 				
 				
 				//运行语音识别程序，读取识别转换的文字

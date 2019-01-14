@@ -80,7 +80,8 @@ public class MainInterface extends JFrame {
 		textBox3.setHorizontalAlignment(SwingConstants.LEFT);
 		textBox3.setFont(new Font("宋体", Font.PLAIN, 20));
 		textBox3.setBounds(25, 155, 600, 36);
-
+		textBox3.setEditable(false);
+		
 		textBox3.setColumns(20);
 		textBox3.setVisible(true);
 
@@ -157,7 +158,7 @@ public class MainInterface extends JFrame {
 				// 文本框3的内容，运行ModelToQuery，返回Neo4j查询语句，不可编辑
 				ModelToQuery modelToQuery = new ModelToQuery();
 				textBox3.setText(modelToQuery.QueryText());
-				textBox3.setEditable(false);
+				
 
 				// AnswerBox的内容，运行Neo4jQuery，以文本形式返回Neo4j的查询结果
 				Neo4jQuery neo4jQuery = new Neo4jQuery();

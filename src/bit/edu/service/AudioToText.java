@@ -96,8 +96,8 @@ public class AudioToText {
 		// send request
 		DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
 		wr.write(loadFile(pcmFile));
-		wr.flush();
 		wr.close();
+		wr.flush();
 		System.out.println(getUtf8String(printResponse(conn)));
 		
 		s = getUtf8String(printResponse(conn));

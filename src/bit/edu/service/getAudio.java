@@ -45,7 +45,7 @@ public class getAudio {
 	private byte[] audioData;
 
 	/**
-	 * 点击录音按钮，开始录音
+	 * 点击麦克风按钮，开始录音
 	 * 
 	 * @return
 	 */
@@ -77,7 +77,7 @@ public class getAudio {
 			ex.printStackTrace();
 
 		}
-		System.out.println("2");
+		System.out.println("录音程序调用结束");
 
 	}
 
@@ -101,30 +101,29 @@ public class getAudio {
 		boolean bigEndian = true;
 		int channels = 1;
 
-		System.out.println("3");
+		System.out.println("record和save程序运行前音频参数的设置");
 
 		return new AudioFormat(encoding, rate, sampleSize, channels, (sampleSize / 8) * channels, rate, bigEndian);
 
 	}
 
 	/**
-	 * 点击录音结束按钮，结束录音程序，保存录音文件，返回文件的物理地址fliePath
+	 * 点击录音界面的提交按钮，StopRecord结束录音程序，Save保存录音文件，返回文件的物理地址fliePath
 	 */
 
 	public void StopRecord() {
 
 		// 停止录音
 		stopflag = true;
+		System.out.println("录音停止程序调用结束");
 
 	}
 
 	// 保存录音
 	public void Save() {
-		System.out.println("11111111");
+		
 		// 取得录音输入流
 		af = getAudioFormat();
-
-		System.out.println("222222");
 		bais = new ByteArrayInputStream(audioData);
 
 		ais = new AudioInputStream(bais, af, audioData.length / af.getFrameSize());
@@ -172,6 +171,7 @@ public class getAudio {
 
 			}
 		}
+		System.out.println("录音文件保存程序调用结束");
 //		String filePath = "E:/sources/Audio/test1.mp3";
 //		return filePath;
 
@@ -190,7 +190,6 @@ public class getAudio {
 			baos = new ByteArrayOutputStream();
 			try {
 
-				System.out.println("ok3");
 				stopflag = false;
 				while (stopflag != true) {
 
@@ -230,115 +229,116 @@ public class getAudio {
 				}
 			}
 
+			System.out.println("录音程序用到的内部类");
 		}
 
 	}
 
-	// 播放录音
-	public void play(){
-
-		// 将baos中的数据转换为字节数据
-		audioData = baos.toByteArray();
-
-		// 转换为输入流
-		bais = new ByteArrayInputStream(audioData);
-		af = getAudioFormat();
-		ais = new AudioInputStream(bais, af, audioData.length / af.getFrameSize());
-
-		try {
-
-			DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, af);
-
-			sd = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
-			sd.open(af);
-			sd.start();
-
-			// 创建播放进程
-
-			Play py = new Play();
-
-			Thread t2 = new Thread(py);
-
-			t2.start();
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-
-		} finally {
-
-			try {
-
-				// 关闭流
-
-				if (ais != null){
-
-					ais.close();
-				}
-
-				if (bais != null){
-
-					bais.close();
-
-				}
-
-				if (baos != null){
-
-					baos.close();
-
-				}
-
-			} catch (Exception e) {
-
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	//播放类,同样也做成内部类
-
-		class Play implements Runnable{
-
-			//播放baos中的数据即可
-
-			public void run() {
-
-				byte bts[] = new byte[10000];
-
-				try {
-
-					int cnt;
-
-		            //读取数据到缓存数据
-
-		            while ((cnt = ais.read(bts, 0, bts.length)) != -1) 
-
-		            {
-
-		                if (cnt > 0){
-		                	
-		                    //写入缓存数据
-		                    //将音频数据写入到混频器
-		                    sd.write(bts, 0, cnt);
-
-		                }
-
-		            }
-
-		           
-
-				} catch (Exception e) {
-
-					e.printStackTrace();
-
-				}finally{
-
-					 sd.drain();
-			         sd.close();
-
-				}
-			}		
-		}
+//	// 播放录音
+//	public void play(){
+//
+//		// 将baos中的数据转换为字节数据
+//		audioData = baos.toByteArray();
+//
+//		// 转换为输入流
+//		bais = new ByteArrayInputStream(audioData);
+//		af = getAudioFormat();
+//		ais = new AudioInputStream(bais, af, audioData.length / af.getFrameSize());
+//
+//		try {
+//
+//			DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, af);
+//
+//			sd = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
+//			sd.open(af);
+//			sd.start();
+//
+//			// 创建播放进程
+//
+//			Play py = new Play();
+//
+//			Thread t2 = new Thread(py);
+//
+//			t2.start();
+//
+//		} catch (Exception e) {
+//
+//			e.printStackTrace();
+//
+//		} finally {
+//
+//			try {
+//
+//				// 关闭流
+//
+//				if (ais != null){
+//
+//					ais.close();
+//				}
+//
+//				if (bais != null){
+//
+//					bais.close();
+//
+//				}
+//
+//				if (baos != null){
+//
+//					baos.close();
+//
+//				}
+//
+//			} catch (Exception e) {
+//
+//				e.printStackTrace();
+//			}
+//		}
+//	}
+//	
+//	//播放类,同样也做成内部类
+//
+//		class Play implements Runnable{
+//
+//			//播放baos中的数据即可
+//
+//			public void run() {
+//
+//				byte bts[] = new byte[10000];
+//
+//				try {
+//
+//					int cnt;
+//
+//		            //读取数据到缓存数据
+//
+//		            while ((cnt = ais.read(bts, 0, bts.length)) != -1) 
+//
+//		            {
+//
+//		                if (cnt > 0){
+//		                	
+//		                    //写入缓存数据
+//		                    //将音频数据写入到混频器
+//		                    sd.write(bts, 0, cnt);
+//
+//		                }
+//
+//		            }
+//
+//		           
+//
+//				} catch (Exception e) {
+//
+//					e.printStackTrace();
+//
+//				}finally{
+//
+//					 sd.drain();
+//			         sd.close();
+//
+//				}
+//			}		
+//		}
 	
 
 }
