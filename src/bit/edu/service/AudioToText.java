@@ -226,6 +226,7 @@ public class AudioToText {
 
 			FileWriter fw = null;
 			try {
+				//true.txt为提取出的有效文本
 				fw = new FileWriter("E:/sources/Audio/true.txt", true);
 				fw.write(questionText);// 将
 				fw.flush();
