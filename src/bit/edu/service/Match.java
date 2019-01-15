@@ -17,12 +17,12 @@ import java.util.regex.Pattern;
 
 public class Match {
 
-	public String normalText() {
-		String finalText;
-
-		finalText = "88";
-		return finalText;
-	}
+//	public String normalText() {
+//		String finalText;
+//
+//		finalText = "88";
+//		return finalText;
+//	}
 
 	// 匹配模板
 	public static String Matching() {

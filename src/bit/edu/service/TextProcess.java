@@ -21,6 +21,7 @@ import org.wltea.analyzer.core.Lexeme;
 
 public class TextProcess {
 	public static String normalText;
+	public static String Type;
 
 	// 对AudioToText输出的有效文本true.txt分词
 	public static String Segment() {
@@ -334,6 +335,11 @@ public class TextProcess {
 		} catch (IOException e) {
 			System.out.println("错误");
 		}
+		
+//		//文本框2的内容有词性标注的结果和匹配的结果
+//		Match match = new Match();
+//		Type = match.Matching();
+//		normalText = normalText + Type;
 		return normalText;
 	}
 

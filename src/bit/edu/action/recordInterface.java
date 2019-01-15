@@ -72,7 +72,7 @@ public class recordInterface extends JDialog {
 				
 				//运行语音识别程序，读取识别转换的文字
 				AudioToText audioToText = new AudioToText();
-				//textBox1要接收的转换后的文本
+				//textBox1要接收的转换后的文本（经提取之后的有效文本）
 				try {
 					questionText = audioToText.questionText();
 				} catch (Exception e1) {
@@ -84,9 +84,9 @@ public class recordInterface extends JDialog {
 				recordInterface.this.content = questionText;
 							
 				//运行TextProcess对提取的有效文本进行分词和词性标注
-				TextProcess Text_process = new TextProcess();
+				//TextProcess Text_process = new TextProcess();
 				//文本框2要接收的与模板匹配之后的标准问题文本
-				String normalText = Text_process.Segment();
+				String normalText = TextProcess.Segment();
 				//测试
 				System.out.println("文本框2   "+normalText);
 				recordInterface.this.content1 = normalText;
