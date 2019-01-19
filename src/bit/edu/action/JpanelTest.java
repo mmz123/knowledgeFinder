@@ -69,7 +69,7 @@ public class JpanelTest extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("");
-		btnNewButton.setBounds(5, 6, 622, 90);
+		btnNewButton.setBounds(172, 6, 622, 90);
 		btnNewButton.setBackground(SystemColor.window);
 		btnNewButton.setIcon(new ImageIcon("microphone.jpg"));
 //		btnNewButton.setBorder(null);//去掉边框线
@@ -80,11 +80,11 @@ public class JpanelTest extends JFrame {
 		contentPane.add(label);
 		
 		label_1 = new JLabel("");
-		label_1.setBounds(15, 109, 386, 90);
+		label_1.setBounds(391, 82, 386, 90);
 		contentPane.add(label_1);
 		
 		textBox1 = new JTextField();
-		textBox1.setBounds(662, 6, 106, 90);
+		textBox1.setBounds(52, 6, 106, 90);
 		textBox1.setHorizontalAlignment(SwingConstants.LEFT);
 		textBox1.setFont(new Font("宋体", Font.PLAIN, 12));
 		contentPane.add(textBox1);

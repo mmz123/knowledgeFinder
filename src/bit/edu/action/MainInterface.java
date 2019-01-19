@@ -40,7 +40,7 @@ public class MainInterface extends JFrame {
 		setTitle(title);// 窗体标题
 		setBackground(SystemColor.inactiveCaption);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // 窗口关闭方式
-		setBounds(100, 100, 800, 600);
+		setBounds(100, 100, 1000, 700);
 
 		JPanel contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.control);
@@ -52,22 +52,30 @@ public class MainInterface extends JFrame {
 
 		// 文本框1
 		textBox1 = new JTextField();
+		JLabel label1 = new JLabel("问题文本");
+		label1.setBounds(25, 25, 75, 36);
+		
 		textBox1.setHorizontalAlignment(SwingConstants.LEFT);
 		textBox1.setFont(new Font("宋体", Font.PLAIN, 20));
-		textBox1.setBounds(25, 25, 600, 36);
+		textBox1.setBounds(100, 25, 700, 36);
 		textBox1.setColumns(20);
 
 		contentPane.add(textBox1);
+		contentPane.add(label1, textBox1);
 
 		// 文本框2
 		textBox2 = new JTextField();
+		JLabel label2 = new JLabel("词性标注");
+		label2.setBounds(25, 90, 75, 36);
+		
 		textBox2.setHorizontalAlignment(SwingConstants.LEFT);
 		textBox2.setFont(new Font("宋体", Font.PLAIN, 20));
-		textBox2.setBounds(25, 90, 600, 36);
+		textBox2.setBounds(100, 90, 700, 36);
 		textBox2.setColumns(20);
 		textBox2.setVisible(true);
 
 		contentPane.add(textBox2);
+		contentPane.add(label2, textBox2);
 		// textBox2.setText("model question");
 
 		// 在textBox2中定义其属性格式之后在这里添加的方式
@@ -76,27 +84,30 @@ public class MainInterface extends JFrame {
 
 		// 文本框3
 		textBox3 = new JTextField();
+		JLabel label3 = new JLabel("查询语句");
+		label3.setBounds(25, 155, 75, 36);
 
 		textBox3.setHorizontalAlignment(SwingConstants.LEFT);
 		textBox3.setFont(new Font("宋体", Font.PLAIN, 20));
-		textBox3.setBounds(25, 155, 600, 36);
+		textBox3.setBounds(100, 155, 700, 36);
 		textBox3.setEditable(false);
 		
 		textBox3.setColumns(20);
 		textBox3.setVisible(true);
 
 		contentPane.add(textBox3);
+		contentPane.add(label3, textBox3);
 
 		// 答案框
 		JTextArea AnswerBox = new JTextArea();
 		AnswerBox.setFont(new Font("宋体", Font.PLAIN, 20));
-		AnswerBox.setBounds(25, 220, 360, 320);
+		AnswerBox.setBounds(25, 220, 460, 320);
 		AnswerBox.setColumns(20);
 		AnswerBox.setLineWrap(true);// 自动换行
 
 		JScrollPane jsp = new JScrollPane(AnswerBox); // 添加滚动条
-		AnswerBox.setBounds(25, 220, 360, 600); // 设置 JTextArea 宽100,高500
-		jsp.setBounds(25, 220, 360, 320); // 设置 JScrollPane 宽100,高200
+		AnswerBox.setBounds(25, 220, 460, 700); // 设置 JTextArea 宽100,高500
+		jsp.setBounds(25, 220, 460, 420); // 设置 JScrollPane 宽100,高200
 
 		contentPane.add(AnswerBox);
 
@@ -104,7 +115,7 @@ public class MainInterface extends JFrame {
 		JButton record = new JButton("");
 		record.setBackground(SystemColor.window);
 		record.setIcon(new ImageIcon("microphone.jpg"));
-		record.setBounds(680, 25, 20, 36);
+		record.setBounds(860, 25, 20, 36);
 		record.setBorder(null);
 
 		contentPane.add(record);
@@ -139,7 +150,7 @@ public class MainInterface extends JFrame {
 		confirm.setToolTipText("问题无误确认");
 		confirm.setBackground(SystemColor.control);
 		confirm.setFont(new Font("宋体", Font.PLAIN, 16));
-		confirm.setBounds(650, 90, 80, 36);
+		confirm.setBounds(830, 90, 80, 36);
 		confirm.setFocusPainted(false);
 		contentPane.add(confirm);
 		// 为确认按钮添加鼠标单击事件
@@ -171,7 +182,7 @@ public class MainInterface extends JFrame {
 		// 图谱展示
 		Canvas canvas = new Canvas();
 		canvas.setBackground(SystemColor.inactiveCaptionBorder);
-		canvas.setBounds(411, 220, 363, 320);
+		canvas.setBounds(511, 220, 463, 420);
 		contentPane.add(canvas);
 
 	}
