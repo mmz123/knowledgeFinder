@@ -127,7 +127,7 @@ public class AudioToText {
 		FileWriter fw = null;
 		try {
 			fw = new FileWriter("E:/sources/Audio/test1.txt", true);
-			fw.write(new JSONObject(response.toString()).toString(1));// 这里向文件中输入结果123
+			fw.write(new JSONObject(response.toString()).toString(1));// 这里向文件中输入结果
 			fw.flush();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
