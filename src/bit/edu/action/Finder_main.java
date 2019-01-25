@@ -13,8 +13,11 @@ public class Finder_main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		test();
+		
 		//主方法中调用CreatInterface()方法
 //		new mainInterface().CreatInterface("问答系统");
+		/*
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -25,7 +28,13 @@ public class Finder_main {
 				}
 			}
 		});
-
+*/
+	}
+	
+	public static void test(){
+		String s = "北京 理工 大学";
+		
+//		sysout
 	}
 
 }

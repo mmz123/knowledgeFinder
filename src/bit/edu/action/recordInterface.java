@@ -29,6 +29,10 @@ import bit.edu.service.getAudio;
  */
 public class recordInterface extends JDialog {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String content;
 	private String content1;
 	private String questionText;
