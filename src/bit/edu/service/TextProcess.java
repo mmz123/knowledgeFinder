@@ -25,7 +25,7 @@ public class TextProcess {
 
 	// 对AudioToText输出的有效文本true.txt分词
 	public static String Segment() {
-		String tager;
+		//String tager;
 		String text = "";// 分词前的字符串（现在只读一行）
 		String pathname1 = "E:/sources/Audio/true.txt";// 读入提取的有效文本文件路径
 		String text2 = "";
@@ -51,7 +51,7 @@ public class TextProcess {
 
 				System.out.print(lex.getLexemeText() + "/ ");
 				
-				normalText += lex.getLexemeText() +" ";
+				normalText += lex.getLexemeText() +"/ ";
 			}
 
 			FileWriter fw = null;
@@ -98,12 +98,7 @@ public class TextProcess {
 	}
 
 	// 对Segment方法分词后的结果进行标注
-	public static String PosTag() {
-		
-		
-		
-		
-		return Type;
+//	public static String PosTag() {
 		
 //		// 统计出训练样本中词性种类及其频率
 //		String content = "";
@@ -349,6 +344,6 @@ public class TextProcess {
 ////		Type = match.Matching();
 ////		normalText = normalText + Type;
 //		return normalText;
-	}
+//	}
 
 }
