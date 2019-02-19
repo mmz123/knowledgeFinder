@@ -2,12 +2,17 @@ package bit.edu.service;
 
 import java.io.File;
 
+/**
+ * 读取getAudio生成的录音文件，转成pcm格式
+ * @author asus
+ *
+ */
 public class FormatChange extends AudioToText{
 	
 	public String Format(String path) {
 
 		// 要改的文件夹路径
-//		String path = "E:/sources/Audio/test1.mp3";
+//		String path = "D:/sources/Audio/test1.mp3";
 		File file = new File(path);
 		
 		// 得到文件夹下的所有文件和文件夹
@@ -47,7 +52,7 @@ public class FormatChange extends AudioToText{
 		}
 
 		System.out.println("MP3转pcm程序调用结束");
-		//return path = "E:/sources/Audio/test1.pcm";
+		//return path = "D:/sources/Audio/test1.pcm";
 		return path;
 
 	}

@@ -136,7 +136,7 @@ public class getAudio {
 
 			// 以当前的时间命名录音的名字
 			// 将录音的文件存放到F盘下语音文件夹下
-			File filePath = new File("E:/sources/Audio");
+			File filePath = new File("D:/sources/Audio");
 
 			if (!filePath.exists()) {
 
@@ -172,7 +172,7 @@ public class getAudio {
 			}
 		}
 		System.out.println("录音文件保存程序调用结束");
-//		String filePath = "E:/sources/Audio/test1.mp3";
+//		String filePath = "D:/sources/Audio/test1.mp3";
 //		return filePath;
 
 	}
@@ -233,112 +233,6 @@ public class getAudio {
 		}
 
 	}
-
-//	// 播放录音
-//	public void play(){
-//
-//		// 将baos中的数据转换为字节数据
-//		audioData = baos.toByteArray();
-//
-//		// 转换为输入流
-//		bais = new ByteArrayInputStream(audioData);
-//		af = getAudioFormat();
-//		ais = new AudioInputStream(bais, af, audioData.length / af.getFrameSize());
-//
-//		try {
-//
-//			DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, af);
-//
-//			sd = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
-//			sd.open(af);
-//			sd.start();
-//
-//			// 创建播放进程
-//
-//			Play py = new Play();
-//
-//			Thread t2 = new Thread(py);
-//
-//			t2.start();
-//
-//		} catch (Exception e) {
-//
-//			e.printStackTrace();
-//
-//		} finally {
-//
-//			try {
-//
-//				// 关闭流
-//
-//				if (ais != null){
-//
-//					ais.close();
-//				}
-//
-//				if (bais != null){
-//
-//					bais.close();
-//
-//				}
-//
-//				if (baos != null){
-//
-//					baos.close();
-//
-//				}
-//
-//			} catch (Exception e) {
-//
-//				e.printStackTrace();
-//			}
-//		}
-//	}
-//	
-//	//播放类,同样也做成内部类
-//
-//		class Play implements Runnable{
-//
-//			//播放baos中的数据即可
-//
-//			public void run() {
-//
-//				byte bts[] = new byte[10000];
-//
-//				try {
-//
-//					int cnt;
-//
-//		            //读取数据到缓存数据
-//
-//		            while ((cnt = ais.read(bts, 0, bts.length)) != -1) 
-//
-//		            {
-//
-//		                if (cnt > 0){
-//		                	
-//		                    //写入缓存数据
-//		                    //将音频数据写入到混频器
-//		                    sd.write(bts, 0, cnt);
-//
-//		                }
-//
-//		            }
-//
-//		           
-//
-//				} catch (Exception e) {
-//
-//					e.printStackTrace();
-//
-//				}finally{
-//
-//					 sd.drain();
-//			         sd.close();
-//
-//				}
-//			}		
-//		}
 	
 
 }

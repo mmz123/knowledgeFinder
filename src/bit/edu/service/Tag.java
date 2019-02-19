@@ -10,8 +10,8 @@ public class Tag {
 		static ResultSet rs;
 		//定义连接字符
 		static String dbURL = "jdbc:sqlserver://10.101.15.216:1433;DatabaseName=knowledgefinder";//DatebaseName写SQL数据库名
-		static String userName = "zengmm";//SQL用户名
-		static String userPwd = "zengmm";//SQL本地密码
+		static String userName = "zmm";//SQL用户名
+		static String userPwd = "zmm123";//SQL本地密码
 				
 		public static void connDB() {   //连接数据库方法
 			try {

@@ -24,7 +24,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * 1.读取getAudio生成的录音文件，转成pcm格式 2.调用百度语音识别接口 3.输出音频识别文本
+ * 1.调用formatChange方法将getAudio生成的录音文件D:/sources/Audio/test1.mp3，转成pcm格式 2.调用百度语音识别接口 3.输出音频识别文本
  * 
  * @author me
  *
@@ -52,10 +52,10 @@ public class AudioToText {
 		// method1();
 		FormatChange formatChange = new FormatChange();
 
-		method(formatChange.Format("E:/sources/Audio/test1.mp3"));
+		method(formatChange.Format("D:/sources/Audio/test1.mp3"));
 		System.out.println("语音识别的主要程序");
 		
-		//RecognitionResult = Extract("E:/sources/Audio/test1.txt");
+		//RecognitionResult = Extract("D:/sources/Audio/test1.txt");
 		test = Extract(s);
 		
 		RecognitionResult = new String(test.getBytes(),"UTF-8");
@@ -135,7 +135,7 @@ public class AudioToText {
 
 		FileWriter fw = null;
 		try {
-			fw = new FileWriter("E:/sources/Audio/test1.txt", false);
+			fw = new FileWriter("D:/sources/Audio/test1.txt", false);
 			fw.write(new JSONObject(response.toString()).toString(1));// 这里向文件中输入结果
 			fw.flush();
 		} catch (FileNotFoundException e) {
@@ -211,7 +211,7 @@ public class AudioToText {
 		  
 		  FileWriter fw = null;
 			try {
-				fw = new FileWriter("E:/sources/Audio/true.txt", false);
+				fw = new FileWriter("D:/sources/Audio/true.txt", false);
 				fw.write(questionText);// 这里向文件中输入结果
 				fw.flush();
 			} catch (Exception e) {
@@ -260,7 +260,7 @@ public class AudioToText {
 //			FileWriter fw = null;
 //			try {
 //				//true.txt为提取出的有效文本
-//				fw = new FileWriter("E:/sources/Audio/true.txt", false);
+//				fw = new FileWriter("D:/sources/Audio/true.txt", false);
 //				fw.write(questionText);// 将
 //				fw.flush();
 //			} catch (FileNotFoundException e) {

@@ -91,9 +91,10 @@ public class recordInterface extends JDialog {
 				//运行TextProcess对提取的有效文本进行分词和词性标注
 				//TextProcess Text_process = new TextProcess();
 				//文本框2要接收的与模板匹配之后的标准问题文本
-				String normalText1 = TextProcess.Segment();
-				String normalText2 = Tag.Tagging(normalText1);
-				String normalText = normalText1 + normalText2;
+//				String normalText1 = TextProcess.Segment();
+//				String normalText2 = Tag.Tagging(normalText1);
+//				String normalText = normalText1 + normalText2;
+				String normalText = TextProcess.Segment();
 				//测试
 				System.out.println("文本框2   "+normalText);
 				recordInterface.this.content1 = normalText;

@@ -13,7 +13,7 @@ import org.wltea.analyzer.core.IKSegmenter;
 import org.wltea.analyzer.core.Lexeme;
 
 /**
- * 1.对AudioToText输出的问题文本或输入的问题文本分词处理 2.词性标注 3.将词性标注后的文本输入到文本框2内
+ * 1.对AudioToText输出的问题文本或输入的问题文本分词处理 2.返回分词处理后的文本normalText（输入到文本框2内）
  * 
  * @author me
  *
@@ -21,13 +21,12 @@ import org.wltea.analyzer.core.Lexeme;
 
 public class TextProcess {
 	public static String normalText;
-	public static String Type;
-
+	
 	// 对AudioToText输出的有效文本true.txt分词
 	public static String Segment() {
 		//String tager;
 		String text = "";// 分词前的字符串（现在只读一行）
-		String pathname1 = "E:/sources/Audio/true.txt";// 读入提取的有效文本文件路径
+		String pathname1 = "D:/sources/Audio/true.txt";// 读入提取的有效文本文件路径
 		String text2 = "";
 		try (FileReader reader = new FileReader(pathname1);
 				// 建立一个对象，它把文件内容转成计算机能读懂的语言
@@ -57,7 +56,7 @@ public class TextProcess {
 			FileWriter fw = null;
 			try {
 				// 将分词结果写入文件segmentationResults.txt
-				fw = new FileWriter("E:/sources/Audio/segmentationResults.txt", false);
+				fw = new FileWriter("D:/sources/Audio/segmentationResults.txt", false);
 
 				// 这里向文件中输入结果
 				fw.write(normalText);
@@ -217,7 +216,7 @@ public class TextProcess {
 //		// 计算发射概率
 //		String sentence = "";
 //		try { // 读取test.txt文本中的内容，并保存在sentence的字符流中。
-//			BufferedReader str2 = new BufferedReader(new FileReader("E:/sources/Audio/segmentationResults.txt"));// 读入需要进行词性标注的文本
+//			BufferedReader str2 = new BufferedReader(new FileReader("D:/sources/Audio/segmentationResults.txt"));// 读入需要进行词性标注的文本
 //			String line;
 //			while ((line = str2.readLine()) != null)
 //				sentence += line;
@@ -328,7 +327,7 @@ public class TextProcess {
 //		}
 //
 //		try {
-//			FileWriter f = new FileWriter("E:/sources/Audio/PosTag.txt");// 完成词性标注后的文本的存放路径
+//			FileWriter f = new FileWriter("D:/sources/Audio/PosTag.txt");// 完成词性标注后的文本的存放路径
 //			for (int i = 0; i < result.length; i++){
 //				f.write(result[i] + "");
 //				normalText = normalText + result[i] + "";

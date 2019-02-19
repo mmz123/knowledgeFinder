@@ -12,230 +12,223 @@ import java.sql.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 /**
- * 1.接收textProcess的输出，判断问题所属模板，用整数型变量a的值区分
- * 2.对于第一类模板和第二类模板，能够确定提问的装备类型和属性
+ * 1.接收TextProcess的输出，判断问题所属模板，用整数型变量a的值区分 2.对于第一类模板和第二类模板，能够确定提问的装备类型和属性
  * 
  * @author me
  *
  */
 
 public class Match {
-		
-//		//以下六条指令均与SQL有关
-//		static Connection conn;
-//		static Statement stmt;
-//		static ResultSet rs;
-//		//定义连接字符
-//		static String dbURL = "jdbc:sqlserver://10.101.15.216:1433;DatabaseName=property";//DatebaseName写SQL数据库名
-//		static String userName = "sa";//SQL用户名
-//		static String userPwd = "sqlserver";//SQL本地密码
-//				
-//		public static void connDB() {   //连接数据库方法
-//			try {
-//				//连接数据库
-//				//conn=DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=教务系统","sa","123");
-//				conn=DriverManager.getConnection(dbURL,userName,userPwd);
-//				stmt=conn.createStatement();
-//			}catch(Exception e) {
-//				e.printStackTrace();
-//				System.out.println("连接失败！");
-//			}
-//		}	
-//		public void closeDB() {  //关闭数据库方法
-//			try {
-//				rs.close();
-//				stmt.close();
-//				conn.close();
-//			}catch(Exception e) {
-//				e.printStackTrace();
-//				//System.out.println("关闭失败！");
-//			}
-//		}
-//		
-//		//判断第一、二类模板的装备类型
-//		public static String Matching(String str ){
-//		int a = 0;
-//		String m = "";
-//		String c = "";
-//		String t = "";
-//		
-//		//String str = "AK47步枪 的 装  是多少";
-//		String[] strs=str.split(" ");
-//			
-//		String regex1 = "[^| |]{0,30}(导弹|枪|机床|火箭|超级计算机|坦克).*(的|能).*(是|是多少|多).*";
-//		String regex11 = "[^| |]{0,30}(导弹).*";	
-//		String regex12 = "[^| |]{0,30}(枪).*";
-//		String regex13 = "[^| |]{0,30}(机床).*";
-//		String regex14 = "[^| |]{0,30}(火箭).*";
-//		String regex15 = "[^| |]{0,30}(超级计算机).*";
-//		String regex16 = "[^| |]{0,30}(坦克).*";
-//		String regex2x1 = ".*(和|与|跟).*(比|相比|相比较).*";
-//		String regex2x2 = "[^| |]{0,10}.*(在|.).{0,100}(更).*";
-//		
-//		boolean flag1 = str.matches(regex1);
-//	    boolean flag2 = str.matches(regex2x1)||str.matches(regex2x2);
-//	    
-//	    if(flag1)
-//	    {
-//	    m="1 ";
-//	    boolean flag11 = str.matches(regex11);
-//	    boolean flag12 = str.matches(regex12);
-//	    boolean flag13 = str.matches(regex13);
-//	    boolean flag14 = str.matches(regex14);
-//	    boolean flag15 = str.matches(regex15);
-//	    boolean flag16 = str.matches(regex16);
-//	    	if(flag11) 
-//	    		a=1;
-//	    	else if(flag12)
-//	    		a=2;
-//	    	else if(flag13)
-//	    		a=3;
-//	    	else if(flag14)
-//	    		a=4;
-//	    	else if(flag15)
-//	    		a=5;	
-//	    	else if(flag16)
-//	    		a=6;	
-//	    	for(String s : strs){
-//				 c=search(s,a);
-//				 t=t+c;//t中存放标准属性
-//			}
-//	    }
-//	    		    		
-//	    if(flag2)
-//	    { m="2 ";
-//	    boolean flag11 = str.matches(regex11);
-//	    boolean flag12 = str.matches(regex12);
-//	    boolean flag13 = str.matches(regex13);
-//	    boolean flag14 = str.matches(regex14);
-//	    boolean flag15 = str.matches(regex15);
-//	    boolean flag16 = str.matches(regex16);
-//	    	if(flag11) 
-//	    		a=1;
-//	    	else if(flag12)
-//	    		a=2;
-//	    	else if(flag13)
-//	    		a=3;
-//	    	else if(flag14)
-//	    		a=4;
-//	    	else if(flag15)
-//	    		a=5;	
-//	    	else if(flag16)
-//	    		a=6;	
-//	    	for(String s : strs){
-//				 c=search(s,a);
-//				 t=t+c;//t中存放标准属性
-//			}
-//	    
-//	    
-//	    }
-//	    
-//	    
-//	return t;
-//	}
-//
-//	    public static String search(String str,int a) {   //查询属性方法
-//		   
-//		 String m = "";
-//		 String xhj=null;
-//		 String ppt="";
-//		 switch(a){
-//		 case 1 :xhj="导弹属性集"; break;
-//		 case 2 :xhj="枪属性集"; break;
-//		 case 3 :xhj="机床属性集"; break;
-//		 case 4 :xhj="火箭属性集"; break;
-//		 case 5 :xhj="超级计算机属性集"; break;
-//		 case 6 :xhj="坦克属性集"; break;
-//		 }
-//		 
-//		connDB();//连接数据库
-//
-//		try {
-//
-//			rs=stmt.executeQuery("select 属性  from "+ xhj +" where 属性 ="+"'"+str+"'"+
-//			" or 替换词1 ="+"'"+str+"'"+" or 替换词2="+"'"+str+"'"+" or 替换词3="+"'"+str+"'"+
-//			" or 替换词4="+"'"+str+"'" +" or 替换词5="+"'"+str+"'"+" or 替换词6="+"'"+str+"'");//数据库查询，属性，替换词为列名
-//
-//			if(rs.next()) {
-//			ppt = rs.getString("属性");  
-//	    	//System.out.println(ppt);
-//			m=m+ppt;
-//			}
-//		//else m=m+str;
-//			//System.out.print(m);
-//		}catch(Exception e){
-//
-//			e.printStackTrace();
-//
-//		}
-//	 return m;				
-//	}				
-//
-//	    public static int model(String str){
-//	    int a=0;
-//	    String regex1 = "[^| |]{0,30}(导弹|枪|机床|火箭|超级计算机|坦克).*(的|能).*(是|是多少|多).*";
-//	    String regex2x1 = ".*(和|与|跟).*(比|相比|相比较).*";
-//		String regex2x2 = "[^| |]{0,10}.*(在|.).{0,100}(更).*";
-//		String regex3 = "[^| |]{0,10}(设立|设立|建立|设|建|成立)[| |]";
-//		String regex3x1 = "[^| |]{0,10}(为研发|.).*(设立|而设立|建立|设|建|成立).*";
-//		//String regex3x2 = "[^| |](为研发|为).*(设立).*";
-//		String regex3x3 = "[^| |]{0,20}[| |].*(有哪几个|哪些|哪几个).*(是研究|研究|研发).*";
-//		String regex3x4 = "[^| |].*[| |](是哪个).*[^| |].*[| |]";
-//		//String regex4 = "[^| |]{0,10}.*(研发|研制|开发|设计|发了).*";
-//		String regex4x1 = "[^| |]{0,20}[| |](是哪个).*(研发|研制|开发|设计).*";
-//		String regex4x2 = "[^| |]{0,20}.*[| |](研发的|研发|发了).{0,100}(有哪些|哪些).*(型号).*";
-//		String regex5 = "[^| |]{0,10}(合作|协作)[^| |]{0,10}.*";
-//		String regex5x1 = "(和|与).*[^| |]{0,20}[| |].*(合作).*(哪些|哪个).*";
-//		String regex5x2 = "[^| |]{0,20}[| |].*(与|和).{0,100}(是否).*(合作).*";//5类模板关键词的正则化语句，用于确定问题属于5类模板中的哪一类
-//		//String regex6 = "[^| |]{0,10}(n|v)";//用于筛选问题中的有效词（手工定义词性训练集后，可以筛选出国家、机构、具体型号以及关系等信息）		
-//		boolean flag1 = str.matches(regex1);
-//	    boolean flag2 = str.matches(regex2x1)||str.matches(regex2x2);
-//	    boolean flag3 = str.matches(regex3)|| str.matches(regex3x1)||str.matches(regex3x3)||str.matches(regex3x4);
-//	    //boolean flag3 = str.matches(regex3)|| str.matches(regex3x1)||str.matches(regex3x3)||str.matches(regex3x4)||str.matches(regex3x2);
-//	    boolean flag4 = str.matches(regex4x1)||str.matches(regex4x2);
-//	   // boolean flag4 = str.matches(regex4)|| str.matches(regex4x1)||str.matches(regex4x2);
-//	    boolean flag5 = str.matches(regex5)|| str.matches(regex5x1)||str.matches(regex5x2);
-//	    if(flag1)
-//	        a=1;  
-//		if(flag2)
-//	        a=2;  
-//		if(flag3)
-//	        a=3;    
-//	    if(flag4)
-//	        a=4;  
-//		if(flag5)
-//	        a=5;  
-//		//if(flag6)
-//	       // a=6;  
-//	    return a;
-//	    }
-	    
-		  
 
+	// //以下六条指令均与SQL有关
+	// static Connection conn;
+	// static Statement stmt;
+	// static ResultSet rs;
+	// //定义连接字符
+	// static String dbURL =
+	// "jdbc:sqlserver://10.101.15.216:1433;DatabaseName=property";//DatebaseName写SQL数据库名
+	// static String userName = "sa";//SQL用户名
+	// static String userPwd = "sqlserver";//SQL本地密码
+	//
+	// public static void connDB() { //连接数据库方法
+	// try {
+	// //连接数据库
+	// //conn=DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=教务系统","sa","123");
+	// conn=DriverManager.getConnection(dbURL,userName,userPwd);
+	// stmt=conn.createStatement();
+	// }catch(Exception e) {
+	// e.printStackTrace();
+	// System.out.println("连接失败！");
+	// }
+	// }
+	// public void closeDB() { //关闭数据库方法
+	// try {
+	// rs.close();
+	// stmt.close();
+	// conn.close();
+	// }catch(Exception e) {
+	// e.printStackTrace();
+	// //System.out.println("关闭失败！");
+	// }
+	// }
+	//
+	// //判断第一、二类模板的装备类型
+	// public static String Matching(String str ){
+	// int a = 0;
+	// String m = "";
+	// String c = "";
+	// String t = "";
+	//
+	// //String str = "AK47步枪 的 装 是多少";
+	// String[] strs=str.split(" ");
+	//
+	// String regex1 = "[^| |]{0,30}(导弹|枪|机床|火箭|超级计算机|坦克).*(的|能).*(是|是多少|多).*";
+	// String regex11 = "[^| |]{0,30}(导弹).*";
+	// String regex12 = "[^| |]{0,30}(枪).*";
+	// String regex13 = "[^| |]{0,30}(机床).*";
+	// String regex14 = "[^| |]{0,30}(火箭).*";
+	// String regex15 = "[^| |]{0,30}(超级计算机).*";
+	// String regex16 = "[^| |]{0,30}(坦克).*";
+	// String regex2x1 = ".*(和|与|跟).*(比|相比|相比较).*";
+	// String regex2x2 = "[^| |]{0,10}.*(在|.).{0,100}(更).*";
+	//
+	// boolean flag1 = str.matches(regex1);
+	// boolean flag2 = str.matches(regex2x1)||str.matches(regex2x2);
+	//
+	// if(flag1)
+	// {
+	// m="1 ";
+	// boolean flag11 = str.matches(regex11);
+	// boolean flag12 = str.matches(regex12);
+	// boolean flag13 = str.matches(regex13);
+	// boolean flag14 = str.matches(regex14);
+	// boolean flag15 = str.matches(regex15);
+	// boolean flag16 = str.matches(regex16);
+	// if(flag11)
+	// a=1;
+	// else if(flag12)
+	// a=2;
+	// else if(flag13)
+	// a=3;
+	// else if(flag14)
+	// a=4;
+	// else if(flag15)
+	// a=5;
+	// else if(flag16)
+	// a=6;
+	// for(String s : strs){
+	// c=search(s,a);
+	// t=t+c;//t中存放标准属性
+	// }
+	// }
+	//
+	// if(flag2)
+	// { m="2 ";
+	// boolean flag11 = str.matches(regex11);
+	// boolean flag12 = str.matches(regex12);
+	// boolean flag13 = str.matches(regex13);
+	// boolean flag14 = str.matches(regex14);
+	// boolean flag15 = str.matches(regex15);
+	// boolean flag16 = str.matches(regex16);
+	// if(flag11)
+	// a=1;
+	// else if(flag12)
+	// a=2;
+	// else if(flag13)
+	// a=3;
+	// else if(flag14)
+	// a=4;
+	// else if(flag15)
+	// a=5;
+	// else if(flag16)
+	// a=6;
+	// for(String s : strs){
+	// c=search(s,a);
+	// t=t+c;//t中存放标准属性
+	// }
+	//
+	//
+	// }
+	//
+	//
+	// return t;
+	// }
+	//
+	// public static String search(String str,int a) { //查询属性方法
+	//
+	// String m = "";
+	// String xhj=null;
+	// String ppt="";
+	// switch(a){
+	// case 1 :xhj="导弹属性集"; break;
+	// case 2 :xhj="枪属性集"; break;
+	// case 3 :xhj="机床属性集"; break;
+	// case 4 :xhj="火箭属性集"; break;
+	// case 5 :xhj="超级计算机属性集"; break;
+	// case 6 :xhj="坦克属性集"; break;
+	// }
+	//
+	// connDB();//连接数据库
+	//
+	// try {
+	//
+	// rs=stmt.executeQuery("select 属性 from "+ xhj +" where 属性 ="+"'"+str+"'"+
+	// " or 替换词1 ="+"'"+str+"'"+" or 替换词2="+"'"+str+"'"+" or 替换词3="+"'"+str+"'"+
+	// " or 替换词4="+"'"+str+"'" +" or 替换词5="+"'"+str+"'"+" or
+	// 替换词6="+"'"+str+"'");//数据库查询，属性，替换词为列名
+	//
+	// if(rs.next()) {
+	// ppt = rs.getString("属性");
+	// //System.out.println(ppt);
+	// m=m+ppt;
+	// }
+	// //else m=m+str;
+	// //System.out.print(m);
+	// }catch(Exception e){
+	//
+	// e.printStackTrace();
+	//
+	// }
+	// return m;
+	// }
+	//
+	// public static int model(String str){
+	// int a=0;
+	// String regex1 = "[^| |]{0,30}(导弹|枪|机床|火箭|超级计算机|坦克).*(的|能).*(是|是多少|多).*";
+	// String regex2x1 = ".*(和|与|跟).*(比|相比|相比较).*";
+	// String regex2x2 = "[^| |]{0,10}.*(在|.).{0,100}(更).*";
+	// String regex3 = "[^| |]{0,10}(设立|设立|建立|设|建|成立)[| |]";
+	// String regex3x1 = "[^| |]{0,10}(为研发|.).*(设立|而设立|建立|设|建|成立).*";
+	// //String regex3x2 = "[^| |](为研发|为).*(设立).*";
+	// String regex3x3 = "[^| |]{0,20}[| |].*(有哪几个|哪些|哪几个).*(是研究|研究|研发).*";
+	// String regex3x4 = "[^| |].*[| |](是哪个).*[^| |].*[| |]";
+	// //String regex4 = "[^| |]{0,10}.*(研发|研制|开发|设计|发了).*";
+	// String regex4x1 = "[^| |]{0,20}[| |](是哪个).*(研发|研制|开发|设计).*";
+	// String regex4x2 = "[^| |]{0,20}.*[|
+	// |](研发的|研发|发了).{0,100}(有哪些|哪些).*(型号).*";
+	// String regex5 = "[^| |]{0,10}(合作|协作)[^| |]{0,10}.*";
+	// String regex5x1 = "(和|与).*[^| |]{0,20}[| |].*(合作).*(哪些|哪个).*";
+	// String regex5x2 = "[^| |]{0,20}[|
+	// |].*(与|和).{0,100}(是否).*(合作).*";//5类模板关键词的正则化语句，用于确定问题属于5类模板中的哪一类
+	// //String regex6 = "[^|
+	// |]{0,10}(n|v)";//用于筛选问题中的有效词（手工定义词性训练集后，可以筛选出国家、机构、具体型号以及关系等信息）
+	// boolean flag1 = str.matches(regex1);
+	// boolean flag2 = str.matches(regex2x1)||str.matches(regex2x2);
+	// boolean flag3 = str.matches(regex3)||
+	// str.matches(regex3x1)||str.matches(regex3x3)||str.matches(regex3x4);
+	// //boolean flag3 = str.matches(regex3)||
+	// str.matches(regex3x1)||str.matches(regex3x3)||str.matches(regex3x4)||str.matches(regex3x2);
+	// boolean flag4 = str.matches(regex4x1)||str.matches(regex4x2);
+	// // boolean flag4 = str.matches(regex4)||
+	// str.matches(regex4x1)||str.matches(regex4x2);
+	// boolean flag5 = str.matches(regex5)||
+	// str.matches(regex5x1)||str.matches(regex5x2);
+	// if(flag1)
+	// a=1;
+	// if(flag2)
+	// a=2;
+	// if(flag3)
+	// a=3;
+	// if(flag4)
+	// a=4;
+	// if(flag5)
+	// a=5;
+	// //if(flag6)
+	// // a=6;
+	// return a;
+	// }
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-//	public String normalText() {
-//		String finalText;
-//
-//		finalText = "88";
-//		return finalText;
-//	}
+	// public String normalText() {
+	// String finalText;
+	//
+	// finalText = "88";
+	// return finalText;
+	// }
 
 	// 匹配模板
 	public static String Matching() {
-		String pathname2 = "E:/sources/Audio/PosTag.txt"; // 匹配模板程序读入文件路径
+		String pathname2 = "D:/sources/Audio/PosTag.txt"; // 匹配模板程序读入文件路径
 		String str3 = null;// 存放完成词性标注后的问题
 		String s1 = null;// 存放问题中的实体和关系
 		int a = 0;
@@ -297,7 +290,7 @@ public class Match {
 		}
 		FileWriter fw = null;
 		try {
-			fw = new FileWriter("E:/sources/Audio/Relation.txt", true);// 实体和关系的输出路径
+			fw = new FileWriter("D:/sources/Audio/Relation.txt", true);// 实体和关系的输出路径
 			fw.write(s1);// 这里将提取到的实体、关系等关键词输出到上述路径的文本文档
 			fw.flush();
 		} catch (FileNotFoundException e) {
