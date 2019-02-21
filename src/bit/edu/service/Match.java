@@ -26,7 +26,7 @@ public class Match {
 	static Statement stmt;
 	static ResultSet rs;
 	// 定义连接字符
-	static String dbURL = "jdbc:sqlserver://192.168.0.127:1433;DatabaseName=property";// DatebaseName写SQL数据库名
+	static String dbURL = "jdbc:sqlserver://10.62.40.6:1433;DatabaseName=property";// DatebaseName写SQL数据库名
 	static String userName = "zmm";// SQL用户名
 	static String userPwd = "zmm123";// SQL本地密码
 

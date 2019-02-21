@@ -32,7 +32,7 @@ public class Finder_main {
 	}
 	
 //	public static void test(){
-//		String s = "北京 理工 大学";
+//		String s = "梅卡瓦主战坦克 和 印度阿琼主战坦克 的 宽度 是多少";
 //		
 //	}
 

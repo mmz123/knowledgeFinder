@@ -9,7 +9,7 @@ public class Tag {
 		static Statement stmt;
 		static ResultSet rs;
 		//定义连接字符
-		static String dbURL = "jdbc:sqlserver://10.101.15.216:1433;DatabaseName=knowledgefinder";//DatebaseName写SQL数据库名
+		static String dbURL = "jdbc:sqlserver://10.62.40.6:1433;DatabaseName=knowledgefinder";//DatebaseName写SQL数据库名
 		static String userName = "zmm";//SQL用户名
 		static String userPwd = "zmm123";//SQL本地密码
 		
