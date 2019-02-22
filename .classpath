@@ -9,5 +9,7 @@
 	<classpathentry kind="lib" path="D:/Programme/Project/KG/lib/IKAnalyzer2012FF_u1.jar"/>
 	<classpathentry kind="lib" path="D:/Programme/Project/KG/lib/json-20160810.jar"/>
 	<classpathentry kind="lib" path="D:/Programme/Project/KG/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="D:/Programme/Project/KG/lib/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="D:/Programme/Project/KG/lib/neo4j-java-driver-1.5.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

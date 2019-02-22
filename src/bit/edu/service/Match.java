@@ -98,6 +98,13 @@ public class Match {
 				a = 5;
 			else if (flag16)
 				a = 6;
+			
+//			for (int i=0; i <= strs.length; i++) {
+//				c = search(strs[i], a);
+//				
+//				t = t + c;// t中存放标准属性
+//			}
+			
 			for (String s : strs) {
 				c = search(s, a);
 				t = t + c;// t中存放标准属性
@@ -130,7 +137,7 @@ public class Match {
 			}
 
 		}
-
+		System.out.println("标准语句是：" + t);
 		return t;
 	}
 
@@ -139,7 +146,7 @@ public class Match {
 
 		String m = "";
 		String xhj = null;
-		String ppt = "";
+		//String ppt = "";
 		switch (a) {
 		case 1:
 			xhj = "导弹属性集";
@@ -170,17 +177,18 @@ public class Match {
 					+ "'" + " or 替换词5=" + "'" + str + "'" + " or	 替换词6=" + "'" + str + "'");// 数据库查询，属性，替换词为列名
 
 			if (rs.next()) {
-				ppt = rs.getString("属性");
-				// System.out.println(ppt);
-				m = m + ppt;
+				m = rs.getString("属性");
+				 //System.out.println("m=" + m);
+				
 			}
-			// else m=m+str;
-			// System.out.print(m);
+			 else m=m+str;
+			 //System.out.print( m);
 		} catch (Exception e) {
 
 			e.printStackTrace();
 
 		}
+		
 		return m;
 	}
 
@@ -222,6 +230,8 @@ public class Match {
 			a = 5;
 		// if(flag6)
 		// a=6;
+		System.out.println("属于第" + a + "类模板");
+		Matching(str);
 		return a;
 	}
 
